@@ -272,6 +272,12 @@
       "بيان الاهتمام والأهلية مع إثبات إقامة، مثل شهادة تعليم أو بطاقة تسجيل لاجئ.",
       "بيان الالتزام بالمساهمة في التعليم العالي الفلسطيني.",
       "باقي أوراق قبول DPhil بحسب صفحة البرنامج."
+    ],
+    "guide_route": [
+      "المشروع والتواصل مع المشرف",
+      "طلب DPhil + اختيار المنحة",
+      "بيانا الأهلية والالتزام منفصلان",
+      "إرسال قبل 26 يناير 2027"
     ]
   },
   {
@@ -318,7 +324,19 @@
     "guide_kind": "source",
     "guide_source": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
     "details_verified_at": "2026-11-22",
-    "details_from": "curated"
+    "details_from": "curated",
+    "guide_route": [
+      "فئة MEXT المناسبة",
+      "اختيار جهة الترشيح",
+      "دليل الجهة والاختبارات",
+      "التقديم بموعد جهة الترشيح"
+    ],
+    "guide_branches": {
+      "1": [
+        "السفارة اليابانية",
+        "جامعة بحصة معتمدة"
+      ]
+    }
   },
   {
     "title": "Global Korea Scholarship GKS",
@@ -364,7 +382,19 @@
     "guide_kind": "source",
     "guide_source": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
     "details_verified_at": "2026-11-22",
-    "details_from": "curated"
+    "details_from": "curated",
+    "guide_route": [
+      "دليل GKS للمستوى والدورة",
+      "اختيار المسار",
+      "المستندات حسب دليل المسار",
+      "الإرسال ومراحل الاختيار"
+    ],
+    "guide_branches": {
+      "1": [
+        "مسار السفارة",
+        "مسار الجامعة"
+      ]
+    }
   },
   {
     "title": "Australia Awards Scholarships",
@@ -411,7 +441,13 @@
     "guide_kind": "source",
     "guide_source": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
     "details_verified_at": "2026-11-22",
-    "details_from": "curated"
+    "details_from": "curated",
+    "guide_route": [
+      "Country information",
+      "شروط ومواعيد بلدك",
+      "How to apply الخاص بالبلد",
+      "مراجعة عقد العودة لعامين"
+    ]
   },
   {
     "title": "DAAD Scholarships",
@@ -457,7 +493,13 @@
     "guide_kind": "source",
     "guide_source": "https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarships/",
     "details_verified_at": "2026-11-22",
-    "details_from": "curated"
+    "details_from": "curated",
+    "guide_route": [
+      "قاعدة منح DAAD",
+      "دعوة البرنامج والأهلية",
+      "بوابة الدعوة أو جهة الترشيح",
+      "إرسال وفق موعد الدعوة"
+    ]
   },
   {
     "title": "France Excellence Eiffel Scholarship",
@@ -503,7 +545,13 @@
     "guide_source": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program",
     "details_verified_at": "2026-11-22",
     "details_from": "curated",
-    "deadline_iso": "2027-01-06"
+    "deadline_iso": "2027-01-06",
+    "guide_route": [
+      "مؤسسة فرنسية وبرنامج مؤهل",
+      "طلب الترشيح لدى المؤسسة",
+      "المؤسسة ترسل إلى Campus France",
+      "6 يناير: موعد الجهة النهائي"
+    ]
   },
   {
     "title": "Swiss Government Excellence Scholarships",
@@ -548,7 +596,13 @@
     "guide_kind": "source",
     "guide_source": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance",
     "details_verified_at": "2026-11-22",
-    "details_from": "curated"
+    "details_from": "curated",
+    "guide_route": [
+      "قائمة البلد ونوع المنحة",
+      "مشرف سويسري وخطة بحث",
+      "التسجيل في GO ESKAS",
+      "إرسال وفق موعد البلد"
+    ]
   },
   {
     "title": "Fulbright Foreign Student Program",
@@ -593,7 +647,19 @@
     "guide_kind": "source",
     "guide_source": "https://foreign.fulbrightonline.org/about/foreign-student-program/",
     "details_verified_at": "2026-11-22",
-    "details_from": "curated"
+    "details_from": "curated",
+    "guide_route": [
+      "برنامج فولبرايت في بلدك",
+      "تحديد مسار القبول",
+      "تجهيز الطلب والاختبارات",
+      "الإرسال وفق مواعيد المسار"
+    ],
+    "guide_branches": {
+      "1": [
+        "IIE: مكتب فولبرايت",
+        "Self: تتقدم للجامعات"
+      ]
+    }
   },
   {
     "title": "Manaaki New Zealand Scholarships",
@@ -639,7 +705,13 @@
     "guide_kind": "source",
     "guide_source": "https://www.nzscholarships.govt.nz/how-to-apply-for-a-scholarship/",
     "details_verified_at": "2026-11-22",
-    "details_from": "curated"
+    "details_from": "curated",
+    "guide_route": [
+      "البلد واختبار الأهلية",
+      "التخصص والمؤسسة",
+      "How to apply: اختر منطقتك",
+      "الكشف مع سلم التقديرات"
+    ]
   },
   {
     "title": "Pan African University Scholarships",
@@ -688,6 +760,622 @@
     "guide_source": "https://www.au-pau.org/submission/faq/",
     "details_verified_at": "2026-11-22",
     "details_from": "curated",
-    "guide_note": "صفحة المعاهد تنبه إلى عدم استقبال طلاب جدد في معهد كينيا في 2026. راجع دعوة الدورة قبل الاختيار."
+    "guide_note": "صفحة المعاهد تنبه إلى عدم استقبال طلاب جدد في معهد كينيا في 2026. راجع دعوة الدورة قبل الاختيار.",
+    "guide_route": [
+      "الدورة والمعهد المتاح",
+      "تسجيل PAU وبرنامج واحد",
+      "استكمال الملف مع Save",
+      "FINISH + بريد تأكيد ورقم طلب"
+    ]
+  },
+  {
+    "title": "Cambridge Mastercard Foundation Scholars Program",
+    "title_ar": "منحة ماستركارد في جامعة كامبريدج 2027/28",
+    "link": "https://www.mastercardfoundation.fund.cam.ac.uk/apply/how-apply",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "منحة لماجستير كامل لسنة واحدة في كامبريدج للأفارقة المؤهلين، مع استثناء MBA وMCL وMFIN وMACC.",
+    "summary": "منحة لماجستير كامل لسنة واحدة في كامبريدج للأفارقة المؤهلين، مع استثناء MBA وMCL وMFIN وMACC.",
+    "study_in": "United Kingdom",
+    "study_in_ar": "المملكة المتحدة",
+    "country_codes": [
+      "GB"
+    ],
+    "degrees": [
+      "ماجستير"
+    ],
+    "fully_funded": true,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "رسوم الدراسة ومخصص معيشة بحسب البرنامج."
+    ],
+    "eligibility_ar": [
+      "جنسية وإقامة أفريقية وفق استثناءات اللاجئين والنازحين، مع استيفاء شروط المقرر."
+    ],
+    "deadline": "تحقق من موعد البرنامج أو الدورة لدى الجهة",
+    "status": "verify",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "اختر مقرر ماجستير مؤهلًا من دليل الدراسات العليا، وراجع تبويب Requirements وموعد التمويل.",
+      "من صفحة المقرر اختر Apply Now وأنشئ حساب الطلب. راجع إعفاء الرسوم: مهلة طلب الإعفاء اليدوي المعلنة كانت 20 نوفمبر 2026 وقد انقضت؛ الإعفاء التلقائي يخص قائمة دول محددة.",
+      "داخل طلب المقرر فعّل طلب التمويل واختر Mastercard Foundation Scholars Program إذا ظهر ضمن أهليتك، واكتب بيان المنحة حول القيادة والمستقبل المستدام لأفريقيا.",
+      "أرسل قبل موعد تمويل المقرر، الذي قد يسبق موعد القبول العام. اختيار المنحة داخل طلب المقرر، وليس نموذجًا عامًا منفصلًا."
+    ],
+    "guide_route": [
+      "دليل مقررات كامبريدج",
+      "Apply Now + إعفاء الرسوم",
+      "Funding → Mastercard",
+      "إرسال طلب المقرر"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.mastercardfoundation.fund.cam.ac.uk/apply/how-apply",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "guide_note": "تنبيه: مهلة طلب الإعفاء اليدوي من رسوم التقديم كانت 20 نوفمبر 2026، وانتهت قبل هذه المراجعة. لا نضمن قبول طلب إعفاء متأخر. مواعيد التمويل تختلف حسب المقرر."
+  },
+  {
+    "title": "Politecnico di Milano Merit-Based Scholarships 2027/28",
+    "title_ar": "منح التميز الدولية في بوليتكنيك ميلانو 2027/28",
+    "link": "https://www.polimi.it/en/international-prospective-students/laurea-magistrale-programmes-equivalent-to-master-of-science/scholarships/merit-based-scholarships/",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "منح تنافسية لماجستير باللغة الإنجليزية في بوليتكنيك ميلانو، تتطلب طلب قبول وطلب منحة.",
+    "summary": "منح تنافسية لماجستير باللغة الإنجليزية في بوليتكنيك ميلانو، تتطلب طلب قبول وطلب منحة.",
+    "study_in": "Italy",
+    "study_in_ar": "إيطاليا",
+    "country_codes": [
+      "IT"
+    ],
+    "degrees": [
+      "ماجستير"
+    ],
+    "fully_funded": false,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "إعفاء رسوم دراسية؛ بعض الفئات تضيف مخصصًا. تبقى رسوم إدارية وتأمين وفق الفئة."
+    ],
+    "eligibility_ar": [
+      "طلب قبول ودفع رسمه خلال 1 أكتوبر إلى 1 ديسمبر 2026.",
+      "شهادة لغة إنجليزية صالحة ضمن المهلة الرسمية."
+    ],
+    "deadline": "15 December 2026",
+    "status": "open",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "قدّم لبرنامج MSc باللغة الإنجليزية وادفع رسم طلب القبول خلال فترة Early Bird التي تنتهي في 1 ديسمبر 2026.",
+      "داخل Online Services افتح Benefits and Agreements ثم Economic benefits.",
+      "اختر Scholarships for International Master of Science Students a.y. 2027-2028 وأرسل طلب المنحة قبل ظهر 15 ديسمبر 2026 بتوقيت إيطاليا. لا تقبل طريقة بديلة.",
+      "اقبل نتيجة تقييم القبول وارفع شهادة اللغة المطلوبة بحلول 4 مارس 2027 بحسب الإعلان؛ راجع ملف الدعوة الرسمي لكل التفاصيل."
+    ],
+    "guide_route": [
+      "طلب MSc + الرسم",
+      "Online Services",
+      "Economic benefits → المنحة",
+      "إرسال + شهادة اللغة"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.polimi.it/fileadmin/user_upload/futuri_studenti/borse-di-studio/Merit_Based_Call_For_Applications_a.y._2027-2028.pdf",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2026-12-15",
+    "guide_note": "طلب القبول مع دفع رسمه له مهلة أسبق: 1 ديسمبر 2026. موعد طلب المنحة ظهر 15 ديسمبر بتوقيت إيطاليا."
+  },
+  {
+    "title": "AfOx Graduate Scholarships for Oxford MBA",
+    "title_ar": "منح AfOx وماستركارد لماجستير إدارة الأعمال بأكسفورد",
+    "link": "https://www.sbs.ox.ac.uk/oxford-experience/scholarships-and-funding/afox-graduate-scholarships",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "دعم MBA للأفارقة المقيمين عادة في أفريقيا، بحد أقصى ثلاث منح في دورة 2027/28.",
+    "summary": "دعم MBA للأفارقة المقيمين عادة في أفريقيا، بحد أقصى ثلاث منح في دورة 2027/28.",
+    "study_in": "United Kingdom",
+    "study_in_ar": "المملكة المتحدة",
+    "country_codes": [
+      "GB"
+    ],
+    "degrees": [
+      "ماجستير"
+    ],
+    "fully_funded": true,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "رسوم البرنامج وبدل معيشة حسب الإعلان."
+    ],
+    "eligibility_ar": [
+      "جنسية أفريقية وإقامة اعتيادية في أفريقيا، وعدم حمل ماجستير سابق والالتزام بالتنمية الأفريقية."
+    ],
+    "deadline": "6 January 2027",
+    "status": "open",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "راجع أهلية AfOx وشروط القبول في Oxford MBA.",
+      "أكمل طلب MBA نفسه في موقع كلية الأعمال، وليس طلب منحة AfOx منفصلًا.",
+      "أرسل طلب MBA قبل 6 يناير 2027؛ تؤكد الجهة أن المنحة لا تحتاج طلبًا منفصلًا.",
+      "إذا اختير طلبك للقائمة القصيرة ستتواصل الجامعة معك للمقابلة."
+    ],
+    "guide_route": [
+      "شروط AfOx وMBA",
+      "طلب Oxford MBA",
+      "لا طلب منحة منفصل",
+      "الترشيح ثم المقابلة"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.sbs.ox.ac.uk/oxford-experience/scholarships-and-funding/afox-graduate-scholarships",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-01-06"
+  },
+  {
+    "title": "Imperial President’s PhD Scholarships",
+    "title_ar": "منح الرئيس للدكتوراه في إمبريال 2027/28",
+    "link": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "تمويل دكتوراه تنافسي لمدة 3.5 سنوات، دون قيد جنسية على مستوى المنحة، مع ضرورة التحقق من قدرة القسم على دعم المتقدم الدولي.",
+    "summary": "تمويل دكتوراه تنافسي لمدة 3.5 سنوات، دون قيد جنسية على مستوى المنحة، مع ضرورة التحقق من قدرة القسم على دعم المتقدم الدولي.",
+    "study_in": "United Kingdom",
+    "study_in_ar": "المملكة المتحدة",
+    "country_codes": [
+      "GB"
+    ],
+    "degrees": [
+      "دكتوراه"
+    ],
+    "fully_funded": true,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "رسوم كاملة ومخصص معيشة وصندوق بحث بحسب الإعلان."
+    ],
+    "eligibility_ar": [
+      "تفوق أكاديمي وفق معايير المنحة، ومتقدم دكتوراه جديد وموافقة مشرف مناسب."
+    ],
+    "deadline": "1 March 2027",
+    "status": "open",
+    "reviewed": true,
+    "audience": "eligible",
+    "steps_ar": [
+      "تواصل مع مشرف في إمبريال واحصل على موافقته، وتأكد أنه متاح لإشراف منحة الرئيس.",
+      "قدّم طلب قبول الدكتوراه عبر نظام القبول الإلكتروني؛ لا يوجد نموذج مستقل للمنحة.",
+      "في Supporting documents أرفق بيانًا من صفحتين: بيان شخصي ثم مقترح بحث، وأدخل موصيين أكاديميين غير المشرف المقترح.",
+      "في Funding ضمن Additional questions اختر President’s PhD Scholarship. المواعيد المتبقية المعلنة 11 يناير و1 مارس 2027، قبل 23:59 بتوقيت المملكة المتحدة."
+    ],
+    "guide_route": [
+      "موافقة المشرف",
+      "طلب قبول الدكتوراه",
+      "Supporting documents",
+      "Funding → President’s"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-03-01",
+    "guide_note": "هناك جولة أسبق في 11 يناير 2027. تحقق من الموعد الذي تستهدفه؛ بعض الأقسام قد لا تستطيع دعم طلبات دولية."
+  },
+  {
+    "title": "American University Emerging Global Leader Scholarship",
+    "title_ar": "منحة القائد العالمي الناشئ في الجامعة الأمريكية 2027",
+    "link": "https://www.american.edu/admissions/international/au-egls-apply.cfm",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "منحة دولية لتكاليف الجامعة المفوترة، مع مصروفات أخرى يجب على الطالب تغطيتها، وخيارات منح جزئية.",
+    "summary": "منحة دولية لتكاليف الجامعة المفوترة، مع مصروفات أخرى يجب على الطالب تغطيتها، وخيارات منح جزئية.",
+    "study_in": "United States",
+    "study_in_ar": "الولايات المتحدة",
+    "country_codes": [
+      "US"
+    ],
+    "degrees": [
+      "بكالوريوس"
+    ],
+    "fully_funded": false,
+    "funding_type": "partial",
+    "benefits_ar": [
+      "المنحة الرئيسية تغطي الرسوم والسكن والطعام، ولا تغطي نحو 4000 دولار سنويًا من المصروفات الأخرى المذكورة.",
+      "قد توجد منح جزئية حتى 40000 دولار سنويًا وفق الاختيار."
+    ],
+    "eligibility_ar": [
+      "ليست للمواطن أو المقيم الدائم الأمريكي، ولا لمن بدأ تعليمًا بعد الثانوية؛ تطبق شروط سنة التخرج واللغة."
+    ],
+    "deadline": "15 January 2027",
+    "status": "open",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "أرسل Common Application وكامل مستندات القبول الدولية قبل 15 يناير 2027.",
+      "أنشئ Applicant Portal عند دعوتك إليه، ثم أرسل طلب AU EGLS ومقالاته من البوابة قبل الموعد نفسه؛ يجب إكمال الخطوة الأولى أولًا.",
+      "ارفع خطاب البنك ونموذج AU Declaration of Finances الموقع لإثبات 4000 دولار على الأقل، وأرسل درجات اللغة رسميًا من جهة الاختبار لا برفع الطالب لدرجاته.",
+      "تابع البوابة؛ قد تطلب مقابلة Zoom أو مقالات إضافية للمرشحين. تأكد من قدرتك على تغطية المصروفات غير المشمولة."
+    ],
+    "guide_route": [
+      "Common Application",
+      "Applicant Portal → EGLS",
+      "إثبات التمويل + اللغة",
+      "المقابلة والقرار"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.american.edu/admissions/international/au-egls-apply.cfm",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-01-15",
+    "guide_note": "لا تعامل عبارة تغطية الرسوم والسكن والطعام كتمويل لكل المصروفات: توجد تكاليف غير مشمولة وإثبات أموال مطلوب."
+  },
+  {
+    "title": "Carleton Prestige Scholarships",
+    "title_ar": "منح بريستيج في جامعة كارلتون 2027/28",
+    "link": "https://carleton.ca/awards/awards/scholarships/prestige/",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "منح دخول تنافسية لطلاب ينتقلون مباشرة من الثانوية أو CEGEP.",
+    "summary": "منح دخول تنافسية لطلاب ينتقلون مباشرة من الثانوية أو CEGEP.",
+    "study_in": "Canada",
+    "study_in_ar": "كندا",
+    "country_codes": [
+      "CA"
+    ],
+    "degrees": [
+      "بكالوريوس"
+    ],
+    "fully_funded": false,
+    "funding_type": "partial",
+    "benefits_ar": [
+      "القيمة تختلف بين منح Prestige؛ بعض منح الرسوم مقيدة بقيمة الرسوم المحلية الكندية."
+    ],
+    "eligibility_ar": [
+      "معدل قبول 90% على الأقل وأنشطة وقيادة، دون دراسة سابقة في مؤسسة بعد الثانوية باستثناء CEGEP."
+    ],
+    "deadline": "1 March 2027",
+    "status": "open",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "راجع شروط Prestige وتأكد أنك تبدأ الدراسة بعد الثانوية للمرة الأولى، وجهز رقم طالب كارلتون.",
+      "نزّل ملف 2027-2028 الموحد لكل منح Prestige وافتحه في Adobe لتعبئته.",
+      "جهز رسالة توصية موقعة، وأرسل الطلب والتوصية إلى بريد Awards الرسمي المنشور في صفحة الجامعة مع رقم الطالب.",
+      "يجب وصول الطلب والتوصية قبل 1 مارس 2027 الساعة 11:59 مساءً EST. إذا أرسل الموصي الرسالة منفصلة، تبقى المهلة نفسها."
+    ],
+    "guide_route": [
+      "أهلية Prestige + رقم الطالب",
+      "تحميل PDF وتعبئته",
+      "الطلب + توصية موقعة بالبريد",
+      "وصول الملفين قبل الموعد"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://carleton.ca/awards/awards/scholarships/prestige/",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-03-01"
+  },
+  {
+    "title": "IHS Erasmus University Rotterdam NL Scholarship",
+    "title_ar": "منحة NL لدى معهد IHS في إيراسموس روتردام",
+    "link": "https://www.ihs.nl/en/education/scholarships/nl-scholarship",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "نسخة معهد IHS من منحة NL، وليست وصفًا موحدًا لكل كليات إيراسموس.",
+    "summary": "نسخة معهد IHS من منحة NL، وليست وصفًا موحدًا لكل كليات إيراسموس.",
+    "study_in": "Netherlands",
+    "study_in_ar": "هولندا",
+    "country_codes": [
+      "NL"
+    ],
+    "degrees": [
+      "ماجستير"
+    ],
+    "fully_funded": false,
+    "funding_type": "partial",
+    "benefits_ar": [
+      "5000 يورو لطالب واحد؛ ليست منحة رسوم كاملة."
+    ],
+    "eligibility_ar": [
+      "جنسية من خارج المنطقة الاقتصادية الأوروبية، وتفوق أكاديمي وشروط IHS، دون مؤهل سابق من مؤسسة هولندية."
+    ],
+    "deadline": "25 April 2027",
+    "status": "verify",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "راجع شروط NL Scholarship وشروط برنامج IHS، وقدّم لبرنامج المعهد بحلول 15 أبريل 2027.",
+      "جهز عرض قبول غير مشروط ورسالة دافع وإثبات التفوق الجامعي، مع وصف الوضع المالي والكشف البنكي المطلوب.",
+      "أرسل نموذج NL Scholarship الإلكتروني من رابط صفحة IHS بحلول 25 أبريل 2027.",
+      "تعلن لجنة الجوائز قرارها بحسب الصفحة في 3 مايو 2027؛ المنحة ليست تغطية كاملة لتكاليف الدراسة."
+    ],
+    "guide_route": [
+      "طلب برنامج IHS",
+      "قبول غير مشروط + ملف",
+      "NL Scholarship Form",
+      "قرار لجنة الجوائز"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.ihs.nl/en/education/scholarships/nl-scholarship",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-04-25",
+    "guide_note": "مهلة قبول IHS أسبق من طلب المنحة: 15 أبريل 2027. تختلف إجراءات كليات إيراسموس الأخرى، فلا تستخدم هذا المسار لها."
+  },
+  {
+    "title": "Padua International Excellence Scholarships",
+    "title_ar": "منح بادوفا الدولية للتميز",
+    "link": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "منح تنافسية لبرامج باللغة الإنجليزية؛ الترشيح مرتبط بطلب قبول البرنامج.",
+    "summary": "منح تنافسية لبرامج باللغة الإنجليزية؛ الترشيح مرتبط بطلب قبول البرنامج.",
+    "study_in": "Italy",
+    "study_in_ar": "إيطاليا",
+    "country_codes": [
+      "IT"
+    ],
+    "degrees": [
+      "بكالوريوس",
+      "ماجستير"
+    ],
+    "fully_funded": false,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "8000 يورو إجمالي سنويًا وإعفاء من الرسوم، مع بقاء رسوم إقليمية وطابع وفق القواعد."
+    ],
+    "eligibility_ar": [
+      "مؤهل أجنبي وإقامة خارج إيطاليا وشروط الجنسية والبرنامج في الدعوة."
+    ],
+    "deadline": "تحقق من موعد البرنامج أو الدورة لدى الجهة",
+    "status": "verify",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "اختر برنامجًا باللغة الإنجليزية في بادوفا وتحقق من شروط الجنسية والمؤهل والإقامة.",
+      "أرسل طلب قبول البرنامج داخل موعد دعوته؛ عادة تتركز المنح في الدعوة الأولى.",
+      "طلب البرنامج يؤهلك للمنافسة تلقائيًا إذا انطبقت الشروط؛ لا يوجد طلب منحة مستقل ولا أوراق إضافية خاصة بها وفق الصفحة.",
+      "تابع نتائج الجامعة وإشعار المنحة، واقبلها وأكمل التسجيل ضمن مهلة الإشعار إذا اختير طلبك."
+    ],
+    "guide_route": [
+      "اختر برنامجًا إنجليزيًا",
+      "طلب قبول ضمن الدعوة",
+      "ترشيح تلقائي للمنحة",
+      "النتيجة وقبول المنحة"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated"
+  },
+  {
+    "title": "Global Campus Caucasus Scholarships 2026/27",
+    "title_ar": "منح ماجستير حقوق الإنسان والديمقراطية في القوقاز 2026/27",
+    "link": "https://regionalmaster.net/application-procedure/",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "برنامج في يريفان مع تنقل إقليمي ومنح كاملة أو جزئية تنافسية. دورة 2026/27 مغلقة.",
+    "summary": "برنامج في يريفان مع تنقل إقليمي ومنح كاملة أو جزئية تنافسية. دورة 2026/27 مغلقة.",
+    "study_in": "Armenia",
+    "study_in_ar": "أرمينيا مع تنقل إقليمي بحسب البرنامج",
+    "country_codes": [
+      "AM",
+      "GE",
+      "KG",
+      "MD",
+      "UA"
+    ],
+    "degrees": [
+      "ماجستير"
+    ],
+    "fully_funded": false,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "حتى 20 منحة كاملة أو جزئية للرسوم والسفر و/أو مخصص معيشة وفق البرنامج."
+    ],
+    "eligibility_ar": [
+      "بكالوريوس ولغة إنجليزية واهتمام بحقوق الإنسان، مع أولوية المناطق المستهدفة ومقاعد محدودة لخارجها."
+    ],
+    "deadline": "17 August 2026",
+    "status": "closed",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "هذه دورة مغلقة: انتهت الجولة الثانية في 17 أغسطس 2026. استخدم الدليل لفهم المسار، لا لتقديم طلب جديد الآن.",
+      "للمتقدم الدولي كان المسار عبر نموذج regionalmaster.net، بينما المتقدم المحلي الأرميني له مسار YSU مختلف.",
+      "جهز الشهادات والكشوف المترجمة والموثقة والهوية والسيرة ورسائل الدافع للبرنامج والمنحة ومقترح البحث وبيانات الموصيين حسب القائمة.",
+      "بعد الإرسال تصل رسالة تأكيد؛ المرشحون بعد الاختيار والمقابلة يقدمون مستندات إضافية عبر نظام الوزارة، ولا يصبح القبول نهائيًا قبل موافقاتها المطلوبة."
+    ],
+    "guide_route": [
+      "دورة 2026/27 مغلقة",
+      "اختيار محلي أم دولي",
+      "ملف البرنامج والمنحة",
+      "التأكيد ثم الوزارة"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://regionalmaster.net/application-procedure/",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "closed": true,
+    "deadline_iso": "2026-08-17"
+  },
+  {
+    "title": "University of Twente Kipaji Scholarship",
+    "title_ar": "منحة كيباجي المكملة لمنحة تفينتي",
+    "link": "https://www.utwente.nl/en/education/scholarship-finder/kipaji-scholarship/",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "دعم مكمل لمستفيدي UTS من البلدان المحددة في قائمة Kipaji. ليست منحة مستقلة متاحة للجميع.",
+    "summary": "دعم مكمل لمستفيدي UTS من البلدان المحددة في قائمة Kipaji. ليست منحة مستقلة متاحة للجميع.",
+    "study_in": "Netherlands",
+    "study_in_ar": "هولندا",
+    "country_codes": [
+      "NL"
+    ],
+    "degrees": [
+      "ماجستير"
+    ],
+    "fully_funded": false,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "دعم حتى 12000 يورو حسب الاختيار؛ لا تدفع الجامعة الرسوم مباشرة عن الطالب."
+    ],
+    "eligibility_ar": [
+      "جنسية ضمن قائمة البلدان الأقل نموًا أو المنخفضة الدخل المنشورة، واستحقاق UTS. فلسطين ليست في قائمة Kipaji التي راجعناها."
+    ],
+    "deadline": "1 April 2027",
+    "status": "open",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "تحقق من قائمة جنسيات Kipaji أولًا؛ لا يكفي أن تكون من خارج أوروبا.",
+      "قدّم لبرنامج ماجستير مؤهل ثم لمنحة UTS وفق مسارها وشروطها.",
+      "إذا انطبقت شروط Kipaji، اذكر اهتمامك بها في رسالة دافع طلب UTS. لا يوجد طلب Kipaji عبر نظام قبول الجامعة.",
+      "القسم الأكاديمي هو الذي يرشحك، وقد يطلب رسالة تشرح مساهمة دراستك في بلدك. راع موعد UTS وموعد Kipaji المعلن في 1 أبريل 2027."
+    ],
+    "guide_route": [
+      "قائمة جنسيات Kipaji",
+      "طلب MSc ثم UTS",
+      "الاهتمام داخل رسالة UTS",
+      "ترشيح القسم الأكاديمي"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.utwente.nl/en/education/scholarship-finder/kipaji-scholarship/",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-04-01"
+  },
+  {
+    "title": "University of Twente Scholarship UTS",
+    "title_ar": "منحة جامعة تفينتي UTS للماجستير 2027/28",
+    "link": "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "منحة جزئية للمتفوقين من خارج الاتحاد والمنطقة الاقتصادية الأوروبية. قائمة الجهة تتضمن الأراضي الفلسطينية.",
+    "summary": "منحة جزئية للمتفوقين من خارج الاتحاد والمنطقة الاقتصادية الأوروبية. قائمة الجهة تتضمن الأراضي الفلسطينية.",
+    "study_in": "Netherlands",
+    "study_in_ar": "هولندا",
+    "country_codes": [
+      "NL"
+    ],
+    "degrees": [
+      "ماجستير"
+    ],
+    "fully_funded": false,
+    "funding_type": "partial",
+    "benefits_ar": [
+      "3000 إلى 22000 يورو لسنة وفق القرار؛ ليست منحة كاملة، ويجب تدبير باقي التكلفة."
+    ],
+    "eligibility_ar": [
+      "قبول مشروط أو نهائي في MSc مؤهل ورقم طالب؛ توجد استثناءات لطلاب الجامعة الحاليين وبرامج ITC والتمهيدي ورسوم الدراسة المحلية."
+    ],
+    "deadline": "1 April 2027",
+    "status": "open",
+    "reviewed": true,
+    "audience": "eligible",
+    "steps_ar": [
+      "قدّم أولًا لبرنامج MSc مؤهل في تفينتي؛ قد يستغرق إصدار نتيجة القبول حتى ثمانية أسابيع.",
+      "احصل على خطاب قبول مشروط أو نهائي وعلى رقم الطالب من Studielink أو رسالة الجامعة.",
+      "بعد القبول افتح طلب UTS من رابط صفحة المنحة وأدخل رقم الطالب، وأكمل ملف المنحة منفصلًا عن طلب القبول.",
+      "أرسل قبل 1 أبريل 2027 الساعة 16:00 CET وفق الإعلان، بعد مراجعة قدرتك على تمويل الجزء غير المغطى."
+    ],
+    "guide_route": [
+      "طلب MSc المؤهل",
+      "قبول + رقم طالب",
+      "طلب UTS منفصل",
+      "الإرسال وتدبير الباقي"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-04-01"
+  },
+  {
+    "title": "Kochi University of Technology SSP April 2028",
+    "title_ar": "برنامج SSP للدكتوراه في جامعة كوتشي، قبول أبريل 2028",
+    "link": "https://www.kochi-tech.ac.jp/english/admission/ssp/application-guideline.html",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "دعم دكتوراه يتطلب موافقة مشرف عبر طلب أولي، ثم إرسال ملف رسمي بالبريد. الصفحة الحالية تخص أبريل 2028 أو بعده.",
+    "summary": "دعم دكتوراه يتطلب موافقة مشرف عبر طلب أولي، ثم إرسال ملف رسمي بالبريد. الصفحة الحالية تخص أبريل 2028 أو بعده.",
+    "study_in": "Japan",
+    "study_in_ar": "اليابان",
+    "country_codes": [
+      "JP"
+    ],
+    "degrees": [
+      "دكتوراه"
+    ],
+    "fully_funded": false,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "إعفاء من رسوم محددة ومخصص شهري ودعم بداية وفق الشروط؛ توجد مبالغ تأمين وعضوية غير مشمولة."
+    ],
+    "eligibility_ar": [
+      "موافقة مشرف SSP ومؤهل يعادل الماجستير وشروط السن والتفوق واللغة."
+    ],
+    "deadline": "9 April 2027",
+    "status": "open",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "اختر مشرفين اثنين كحد أقصى من قائمة SSP، وأرسل الطلب الأولي عبر KUT Online Pre-Application Form.",
+      "انتظر رد المشرف ورد عليه سريعًا؛ لا تقدم الطلب الرسمي دون إذنه. عدم الرد خلال أسبوعين يعامل كرفض للطلب الأولي بحسب الدليل.",
+      "عند الحصول على الإذن اختر مشرفًا واحدًا فقط، وجهز الأوراق الرسمية بما فيها إذن المشرف والطلب الأولي الموقع والشهادات والتوصيات وخطة البحث.",
+      "أرسل الأوراق بالبريد إلى KUT لتصل قبل الموعد، وليس بالبريد الإلكتروني. أول موعد منشور لقبول أبريل 2028 هو 9 أبريل 2027، ويوصى بالطلب الأولي قبل ثمانية أسابيع على الأقل."
+    ],
+    "guide_route": [
+      "طلب أولي لمشرفين كحد أقصى",
+      "إذن المشرف",
+      "اختيار مشرف واحد + الملف",
+      "الوصول بالبريد إلى KUT"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://www.kochi-tech.ac.jp/english/admission/ssp/application-guideline.html",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated",
+    "deadline_iso": "2027-04-09",
+    "guide_note": "هذا الدليل لقبول أبريل 2028 أو بعده. له صفحة أخرى لقبول أكتوبر 2027. لا تخلط الدورات أو تفترض أن إرسال ملف إلكتروني يغني عن وصول البريد."
+  },
+  {
+    "title": "University of Melbourne Graduate Research Scholarships",
+    "title_ar": "منح الدراسات العليا البحثية في جامعة ملبورن",
+    "link": "https://scholarships.unimelb.edu.au/awards/graduate-research-scholarships",
+    "source": "المصدر الرسمي",
+    "published": "2026-11-22T11:15:00+00:00",
+    "summary_ar": "منح لماجستير البحث والدكتوراه بترشيح تلقائي للطلاب الجدد عند تقديم طلب المقرر في موعده.",
+    "summary": "منح لماجستير البحث والدكتوراه بترشيح تلقائي للطلاب الجدد عند تقديم طلب المقرر في موعده.",
+    "study_in": "Australia",
+    "study_in_ar": "أستراليا",
+    "country_codes": [
+      "AU"
+    ],
+    "degrees": [
+      "ماجستير",
+      "دكتوراه"
+    ],
+    "fully_funded": false,
+    "funding_type": "unknown",
+    "benefits_ar": [
+      "إعفاء رسوم، وقد يشمل مخصص معيشة وتأمينًا ودعم انتقال حسب نوع المنحة والاختيار."
+    ],
+    "eligibility_ar": [
+      "استيفاء شروط درجة بحثية في ملبورن أو التسجيل فيها. الاختيار للبدل مع الرسوم تنافسي."
+    ],
+    "deadline": "حسب موعد إغلاق المقرر البحثي",
+    "status": "open",
+    "reviewed": true,
+    "audience": "global",
+    "steps_ar": [
+      "اختر درجة بحثية مؤهلة وراجع موعد إغلاقها ومتطلبات الكلية.",
+      "للطالب الجديد، قدّم طلب المقرر البحثي كاملًا بحلول موعده؛ يدخل تلقائيًا في المنافسة على Graduate Research Scholarships.",
+      "تذكر الجامعة أن إشعار إضافة طلب المنحة إلى السجل يصل خلال عشرة أيام عمل من طلب المقرر؛ لا تحتاج نموذج منحة مستقلًا في هذا المسار.",
+      "للطالب الحالي أو المؤجل تختلف الإجراءات حسب الكلية، فراجع صفحة Graduate Research Scholarship Applications بدل افتراض الترشيح التلقائي نفسه."
+    ],
+    "guide_route": [
+      "طلب المقرر البحثي",
+      "ترشيح تلقائي للطالب الجديد",
+      "إشعار خلال 10 أيام عمل",
+      "الحالي والمؤجل: مسار الكلية"
+    ],
+    "guide_kind": "source",
+    "guide_source": "https://scholarships.unimelb.edu.au/awards/graduate-research-scholarships",
+    "details_verified_at": "2026-11-22",
+    "details_from": "curated"
   }
 ]
