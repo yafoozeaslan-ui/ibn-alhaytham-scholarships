@@ -111,6 +111,8 @@
     header.site .n1 { font-size: 66px; }
     .cards { grid-template-columns: 1fr 1fr; }
   }
+
+.filters {display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.filters label{font-size:13px;color:var(--muted);display:grid;gap:4px}select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:white;font:inherit;color:var(--ink)}button,a{touch-action:manipulation}.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.actions .apply,.actions .toggle{margin-inline-start:0}.card.urgent{border-color:#d39339;border-inline-start:4px solid #b45309}.countdown{font-size:13px;font-weight:700;color:var(--warn);margin-top:8px}.filters-note,.notice{font-size:13px;color:var(--muted);margin-top:8px}.detail-page{background:white;border:1px solid var(--line);border-radius:16px;padding:24px}.detail-page h2{font-size:24px;line-height:1.6}.detail-page h3{margin:24px 0 8px;color:var(--accent);font-size:17px}.detail-page ul,.detail-page ol{margin-inline-start:22px}.detail-page p,.detail-page li{margin-bottom:6px}.back{display:inline-block;margin:16px 0;color:var(--accent)}.share-button{font:inherit;border:1px solid var(--line);border-radius:10px;background:white;padding:8px 12px;cursor:pointer;color:var(--accent)}.share-status{font-size:13px;color:var(--accent)}.resultbar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.reset{font:inherit;border:0;background:none;text-decoration:underline;color:var(--accent);cursor:pointer}.detail-page .en-name{direction:ltr;text-align:right;color:var(--muted);font-size:14px}.detail-meta{background:var(--bg);border-radius:12px;padding:14px;margin-top:16px}.general{background:#fff7e9;padding:12px;border-radius:10px}.chip[aria-pressed=true]{background:var(--accent);color:white}.page-hidden{display:none!important}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #d8a432;outline-offset:3px}@media(max-width:639px){.filters{grid-template-columns:1fr}.detail-page{padding:18px}.detail-page h2{font-size:21px}.brand-type .flourish{max-width:100%}}
 </style>
 </head>
 <body>
@@ -125,176 +127,84 @@
     <span class="updated" id="updated"></span>
   </header>
 
+  <main id="listing">
   <div class="controls">
-    <input id="search" type="search" placeholder="ابحث باسم المنحة أو البلد…" aria-label="بحث">
-    <div class="chips" id="srcChips"></div>
-    <div class="chips" id="degChips"></div>
+    <input id="search" type="search" placeholder="ابحث باسم المنحة أو البلد…" aria-label="بحث في المنح">
+    <div class="filters">
+      <label>بلد / منطقة الدراسة<select id="country"><option value="">كل البلدان والمناطق</option></select></label>
+      <label>الدرجة الدراسية<select id="degree"><option value="">كل الدرجات</option></select></label>
+      <label>نوع التمويل<select id="funding"><option value="">كل أنواع التمويل</option><option value="full">تمويل كامل</option><option value="partial">تمويل جزئي (مذكور صراحة)</option><option value="unknown">غير محدد</option></select></label>
+    </div>
+    <p class="filters-note">التمويل الجزئي لا يُستنتج من غياب عبارة «تمويل كامل». قد تكون بعض المنح ممولة جزئيًا دون أن يحدد المصدر ذلك.</p>
+    <div class="chips" id="statusChips" aria-label="حالة التقديم"></div>
+    <details><summary>تصفية حسب المصدر</summary><div class="chips" id="srcChips"></div></details>
   </div>
-
-  <div class="count" id="count"></div>
+  <div class="resultbar"><div class="count" id="count" aria-live="polite"></div><button class="reset" id="reset" type="button">مسح الفلاتر</button></div>
   <div class="cards" id="cards"></div>
-  <div class="empty" id="empty">لا توجد نتائج مطابقة للبحث الحالي.</div>
+  <div class="empty" id="empty">لا توجد نتائج مطابقة. جرّب مسح بعض الفلاتر.</div>
+  </main>
+  <main id="detail" class="page-hidden"></main>
 
   <footer>
     <p>تُعرض منح مُتحقق من أهليتها للطلاب الفلسطينيين، وتُضاف تلقائياً إعلانات المنح التي تذكر فلسطين من المصادر التالية عند ورود جديد:</p>
     <ul id="sources"></ul>
-    <p style="margin-top:10px">روابط البطاقات تقود إلى صفحة المنحة على موقع المصدر (موقع تجميع)، ومنها تجد رابط التقديم الرسمي. المواعيد النهائية وتفاصيل التمويل منقولة من إعلان المصدر كما هي، فأكّدها دائماً من الصفحة الرسمية للمنحة قبل التقديم.</p>
+    <p style="margin-top:10px">كل منحة لها صفحة تفاصيل داخل الموقع ورابط للمصدر. بعض المصادر مواقع رسمية وبعضها مواقع تجميع؛ تحقّق من جهة التقديم قبل إرسال بياناتك. المواعيد النهائية وتفاصيل التمويل منقولة من إعلان المصدر كما هي، فأكّدها دائماً من الصفحة الرسمية للمنحة قبل التقديم.</p>
   </footer>
 </div>
 
 <script>
 const DATA = /*__DATA__*/null;
-
-const WEEK = 7 * 24 * 3600 * 1000;
-const now = Date.now();
-const state = { q: "", src: "الكل", deg: "الكل" };
-
-const esc = (s) => (s || "").replace(/[&<>"']/g, (c) => ({
-  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-}[c]));
-
-const AR_MONTHS = {
-  january: "يناير", february: "فبراير", march: "مارس", april: "أبريل",
-  may: "مايو", june: "يونيو", july: "يوليو", august: "أغسطس",
-  september: "سبتمبر", sept: "سبتمبر", october: "أكتوبر",
-  november: "نوفمبر", december: "ديسمبر",
-  jan: "يناير", feb: "فبراير", mar: "مارس", apr: "أبريل", jun: "يونيو",
-  jul: "يوليو", aug: "أغسطس", sep: "سبتمبر", oct: "أكتوبر", nov: "نوفمبر", dec: "ديسمبر"
-};
-function arDeadline(s) {
-  return esc(s).replace(/\b(January|February|March|April|May|June|July|August|September|Sept|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b\.?/gi,
-    (m) => AR_MONTHS[m.replace(".", "").toLowerCase()] || m);
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeURL = s => {try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)?u.href:'#';}catch{return '#';}};
+const dayMS=86400000;
+const todayParts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hebron',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+const part=t=>todayParts.find(p=>p.type===t).value;
+const today=Date.UTC(+part('year'),+part('month')-1,+part('day'));
+function deadlineDate(it){
+ if(it.deadline_iso && /^\d{4}-\d{2}-\d{2}$/.test(it.deadline_iso))return new Date(it.deadline_iso+'T00:00:00Z').getTime();
+ const s=String(it.deadline||'').trim();
+ const months=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+ let m=s.match(/^(\d{1,2})\s+([A-Za-z]+)\.?[,]?\s+(\d{4})$/),d,mo,y;
+ if(m){d=+m[1];mo=months.indexOf(m[2].slice(0,3).toLowerCase());y=+m[3];}
+ else if((m=s.match(/^([A-Za-z]+)\.?\s+(\d{1,2}),?\s+(\d{4})$/))){d=+m[2];mo=months.indexOf(m[1].slice(0,3).toLowerCase());y=+m[3];}
+ else if((m=s.match(/^(\d{4})-(\d{2})-(\d{2})$/))){y=+m[1];mo=+m[2]-1;d=+m[3];}else return null;
+ const t=Date.UTC(y,mo,d),dt=new Date(t);return mo>=0&&dt.getUTCDate()===d&&dt.getUTCMonth()===mo?t:null;
 }
-function fmtDate(iso) {
-  const d = new Date(iso);
-  return d.toLocaleDateString("ar", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+const days=it=>{const t=deadlineDate(it);return t===null?null:Math.round((t-today)/dayMS);};
+const status=it=>it.closed||it.status==='closed'||(days(it)!==null&&days(it)<0)?'closed':(it.status||'open');
+const country=it=>it.study_in_ar||it.study_in||'غير محدد';
+const funding=it=>it.fully_funded===true?'full':(['partial','جزئي'].includes(it.funding_type)?'partial':'unknown');
+const fundingLabel=it=>({full:'تمويل كامل بحسب المصدر',partial:'تمويل جزئي بحسب المصدر',unknown:'نوع التمويل غير محدد'})[funding(it)];
+const groups=[['open','مفتوحة الآن للتقديم'],['upcoming','تفتح قريبًا بموعد مؤكد'],['unannounced','لم يُعلن موعد الدورة بعد'],['closed','انتهى موعدها بحسب المصدر']];
+const state={q:'',country:'',degree:'',funding:'',src:'',status:''};
+const title=it=>it.title_ar||it.title;
+const pageLink=it=>location.href.split('#')[0]+'#scholarship='+encodeURIComponent(it.link);
+function dateText(it){const t=deadlineDate(it);return t===null?(it.deadline||'غير مؤكد في المصدر'):new Date(t).toLocaleDateString('ar',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});}
+function countdown(it){const n=days(it);if(status(it)!=='open'||n===null||n<0)return '';return n===0?'الموعد المعلن اليوم، تحقّق من ساعة الإغلاق لدى الجهة':`باقي ${n.toLocaleString('ar')} يوم على التاريخ المعلن`;}
+function chips(id,values,key){$(id).replaceChildren();for(const [value,label] of values){const b=document.createElement('button');b.type='button';b.className='chip'+(state[key]===value?' on':'');b.setAttribute('aria-pressed',state[key]===value);b.textContent=label;b.onclick=()=>{state[key]=value;render();};$(id).append(b);}}
+function matches(it){return (!state.country||country(it)===state.country)&&(!state.degree||(it.degrees||[]).includes(state.degree))&&(!state.funding||funding(it)===state.funding)&&(!state.src||it.source===state.src)&&(!state.status||status(it)===state.status)&&(!state.q||[it.title,it.title_ar,it.summary,it.summary_ar,it.study_in,it.study_in_ar].join(' ').toLowerCase().includes(state.q.toLowerCase().trim()));}
+function badges(it){return `<div class="badges"><span class="badge src">${esc(it.source)}</span><span class="badge funded">${esc(fundingLabel(it))}</span>${(it.degrees||[]).map(d=>`<span class="badge deg">${esc(d)}</span>`).join('')}</div>`;}
+function render(){
+ chips('statusChips',[['','كل الحالات'],...groups],'status');chips('srcChips',[['','كل المصادر'],...[...new Set(DATA.items.map(i=>i.source))].map(s=>[s,s])],'src');
+ const items=DATA.items.filter(matches).sort((a,b)=>{const rank=s=>groups.findIndex(g=>g[0]===s);return rank(status(a))-rank(status(b))||((days(a)??Infinity)-(days(b)??Infinity));});
+ $('count').textContent=`يعرض ${items.length.toLocaleString('ar')} من أصل ${DATA.items.length.toLocaleString('ar')} منحة`;$('empty').style.display=items.length?'none':'block';$('cards').replaceChildren();let last='';
+ for(const it of items){const st=status(it);if(st!==last){last=st;const h=document.createElement('h2');h.className='group-title';h.textContent=groups.find(g=>g[0]===st)?.[1]||st;$('cards').append(h);}
+ const el=document.createElement('article');el.className='card'+(st==='closed'?' closed':'')+(st==='open'&&days(it)!==null&&days(it)<=14?' urgent':'');el.innerHTML=`<h2 dir="auto">${esc(title(it))}</h2>${it.title_ar?`<span class="en-name">${esc(it.title)}</span>`:''}${badges(it)}<div class="meta"><span>الدراسة في: ${esc(country(it))}</span><span class="deadline">الموعد النهائي: <bdi>${esc(dateText(it))}</bdi></span></div>${countdown(it)?`<p class="countdown">${esc(countdown(it))}</p>`:''}<div class="actions"><a class="apply" href="#scholarship=${encodeURIComponent(it.link)}">التفاصيل وطريقة التقديم</a><button type="button" class="share-button">مشاركة المنحة</button></div><p class="share-status" role="status"></p>`;el.querySelector('button').onclick=()=>share(it,el.querySelector('.share-status'));$('cards').append(el);}
 }
-function fmtUpdated(iso) {
-  const d = new Date(iso);
-  return d.toLocaleDateString("ar", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) +
-    "، الساعة " + d.toLocaleTimeString("ar", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }) + " بتوقيت UTC";
+async function share(it,out){try{if(navigator.share){await navigator.share({title:title(it),text:title(it)+' | ابن الهيثم للمنح الدراسية',url:pageLink(it)});out.textContent='';}else{await navigator.clipboard.writeText(pageLink(it));out.textContent='تم نسخ الرابط. الصقه في واتساب أو تيليجرام.';}}catch(e){if(e.name!=='AbortError'){out.textContent='انسخ رابط المنحة من شريط العنوان بعد فتح التفاصيل.';}}}
+function listSection(heading,items,empty){return `<h3>${heading}</h3>`+(items?.length?'<ul dir="auto">'+items.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>':`<p class="notice">${empty}</p>`);}
+function route(){const params=new URLSearchParams(location.hash.slice(1)),link=params.get('scholarship');$('listing').classList.toggle('page-hidden',!!link);$('detail').classList.toggle('page-hidden',!link);if(!link){document.title='ابن الهيثم للمنح الدراسية';return;}const it=DATA.items.find(x=>x.link===link);if(!it){$('detail').innerHTML='<a class="back" href="#">← العودة إلى المنح</a><p>هذه المنحة غير متاحة في القائمة الحالية. قد تكون حُذفت أو تغير رابطها.</p>';return;}
+ document.title=title(it)+' | ابن الهيثم للمنح الدراسية';
+ $('detail').innerHTML=`<a class="back" href="#">→ العودة إلى جميع المنح</a><article class="detail-page"><h2 dir="auto">${esc(title(it))}</h2>${it.title_ar?`<p class="en-name">${esc(it.title)}</p>`:''}${badges(it)}<div class="detail-meta"><p>حالة التقديم: ${esc(groups.find(g=>g[0]===status(it))?.[1]||status(it))}</p><p>بلد / منطقة الدراسة: ${esc(country(it))}</p><p>الموعد النهائي بحسب المصدر: <bdi>${esc(dateText(it))}</bdi></p>${countdown(it)?`<p class="countdown">${esc(countdown(it))}</p>`:''}<p class="notice">العدّاد تقريبي بالأيام وفق تاريخ فلسطين، ولا يحدد ساعة الإغلاق أو المنطقة الزمنية لدى جهة المنحة.</p></div><h3>عن المنحة</h3><p dir="auto">${esc(it.summary_ar||it.summary||'راجع المصدر للتفاصيل.')}</p>${listSection('المميزات والتمويل',it.benefits_ar?.length?it.benefits_ar:it.benefits,'لم تُنقل تفاصيل التمويل. راجع المصدر الرسمي.')}${listSection('شروط الأهلية',it.eligibility_ar?.length?it.eligibility_ar:it.eligibility,'لم تتوفر شروط موثقة في البيانات الحالية. راجع جهة المنحة.')}${listSection('الأوراق المطلوبة',it.documents_ar||it.documents,'لم تُضف قائمة أوراق موثقة لهذه المنحة بعد. لا تعتمد على قائمة عامة بدل متطلبات الجهة.')}${it.details_verified_at?`<p class="notice">مراجعة الأوراق والخطوات من المصدر: <bdi>${esc(it.details_verified_at)}</bdi>. قد تتغير المتطلبات؛ أكّدها من الجهة.</p>`:""}<h3>خطوات التقديم</h3>${it.steps_ar?.length?'<ol>'+it.steps_ar.map(s=>`<li>${esc(s)}</li>`).join('')+'</ol>':'<div class="general"><p><strong>إرشادات عامة وليست خطوات رسمية خاصة بهذه المنحة:</strong></p><ol><li>افتح رابط المصدر أدناه واقرأ إعلان الدورة الحالية.</li><li>تأكد من الأهلية، موعد الإغلاق، والأوراق المطلوبة لدى الجهة.</li><li>اتبع رابط أو نموذج التقديم الذي تحدده الجهة الرسمية، واحتفظ بإثبات التقديم.</li></ol></div>'}<div class="actions"><a class="apply" href="${esc(safeURL(it.link))}" target="_blank" rel="noopener noreferrer">فتح المصدر والتقديم ↗</a><button type="button" class="share-button" id="share-detail">مشاركة عبر واتساب وغيرها</button><a class="toggle" href="https://t.me/share/url?url=${encodeURIComponent(pageLink(it))}&text=${encodeURIComponent(title(it))}" target="_blank" rel="noopener noreferrer">مشاركة على تيليجرام</a></div><p id="share-detail-status" class="share-status" role="status"></p><p class="notice">المصدر: ${esc(it.source)}. ${/رسمي|Global Talent/.test(it.source)?'الرابط المُدرج جهة المنحة بحسب بيانات الموقع.':'قد يكون المصدر موقع تجميع؛ اتبع منه رابط الجهة الرسمية.'} الحالة والمعلومات من آخر تحديث وليست تحققًا لحظيًا. تأكد من الجهة قبل التقديم، ولا ترسل كلمة سر أو بيانات مالية لجهات غير موثوقة.</p></article>`;
+ $('share-detail').onclick=()=>share(it,$('share-detail-status'));window.scrollTo(0,0);
 }
-
-function matches(it) {
-  const q = state.q.trim().toLowerCase();
-  if (state.src !== "الكل" && it.source !== state.src) return false;
-  if (state.deg !== "الكل" && !it.degrees.includes(state.deg)) return false;
-  if (!q) return true;
-  return (it.title + " " + (it.title_ar || "") + " " + (it.study_in || "") + " " + (it.study_in_ar || "") + " " + (it.summary || "") + " " + (it.summary_ar || "")).toLowerCase().includes(q);
-}
-
-const GROUPS = [
-  ["open", "مفتوحة الآن للتقديم"],
-  ["upcoming", "تفتح قريباً بموعد مؤكد"],
-  ["unannounced", "لم يُعلن موعد الدورة بعد"],
-  ["closed", "انتهى موعدها بحسب المصدر"],
-];
-
-function render() {
-  const items = DATA.items.filter(matches);
-  document.getElementById("count").textContent =
-    "يعرض " + items.length + " من أصل " + DATA.count + " منحة";
-  const cards = document.getElementById("cards");
-  cards.innerHTML = "";
-  document.getElementById("empty").style.display = items.length ? "none" : "block";
-  let lastGroup = null;
-  for (const it of items) {
-    const g = GROUPS.find(([k]) => k === it.status);
-    const gLabel = g ? g[1] : GROUPS[0][1];
-    if (gLabel !== lastGroup) {
-      lastGroup = gLabel;
-      const h = document.createElement("div");
-      h.className = "group-title";
-      h.textContent = gLabel;
-      cards.appendChild(h);
-    }
-    const isNew = !it.closed && now - new Date(it.published).getTime() < WEEK;
-    const el = document.createElement("div");
-    el.className = "card" + (it.closed ? " closed" : "");
-    const ar = !!it.title_ar;
-    el.innerHTML =
-      (ar
-        ? '<h2>' + esc(it.title_ar) + '</h2><span class="en-name">' + esc(it.title) + '</span>'
-        : '<h2 class="en">' + esc(it.title) + '</h2>') +
-      '<div class="badges">' +
-        '<span class="badge src">' + esc(it.source) + '</span>' +
-        (it.closed ? '<span class="badge closed">انتهى الموعد بحسب المصدر</span>' : '') +
-        (it.status === 'upcoming' ? '<span class="badge soon">يفتح قريبا بموعد مؤكد</span>' : '') +
-        (it.status === 'unannounced' ? '<span class="badge soon">لم يُعلن موعد الدورة بعد</span>' : '') +
-        (isNew ? '<span class="badge new">جديد</span>' : '') +
-        (it.fully_funded ? '<span class="badge funded">ممولة بالكامل</span>' : '') +
-        it.degrees.map((d) => '<span class="badge deg">' + esc(d) + '</span>').join("") +
-      '</div>' +
-      '<div class="meta">' +
-        (it.deadline
-          ? '<span class="deadline">الموعد النهائي (بحسب المصدر): <bdi>' + arDeadline(it.deadline) + '</bdi></span>'
-          : '<span>الموعد النهائي غير مؤكد في إعلان المصدر</span>') +
-        ((it.study_in_ar || it.study_in) ? '<span>الدراسة في: <bdi>' + esc(it.study_in_ar || it.study_in) + '</bdi></span>' : '') +
-        '<span>نُشرت: ' + fmtDate(it.published) + '</span>' +
-      '</div>' +
-      '<a class="apply" href="' + esc(it.link) + '" target="_blank" rel="noopener">صفحة المنحة على موقع المصدر ↗</a>' +
-      '<button type="button" class="toggle">المميزات والتفاصيل</button>' +
-      '<div class="details">' +
-        ((ar ? it.benefits_ar : it.benefits) && (ar ? it.benefits_ar : it.benefits).length
-          ? '<h3>المميزات والتمويل (بحسب إعلان المصدر)</h3><ul class="' + (ar ? '' : 'en') + '">' +
-            (ar ? it.benefits_ar : it.benefits).map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
-          : '') +
-        ((ar ? it.eligibility_ar : it.eligibility) && (ar ? it.eligibility_ar : it.eligibility).length
-          ? '<h3>الأهلية (بحسب إعلان المصدر)</h3><ul class="' + (ar ? '' : 'en') + '">' +
-            (ar ? it.eligibility_ar : it.eligibility).map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
-          : '') +
-        ((ar ? it.summary_ar : it.summary)
-          ? '<h3>عن المنحة' + (ar ? '' : ' (نص المصدر)') + '</h3><p class="sum' + (ar ? '' : ' en') + '">' + esc(ar ? it.summary_ar : it.summary) + '</p>'
-          : '') +
-        '<p class="src">المصدر: ' + esc(it.source) + '. التفاصيل الكاملة ورابط التقديم الرسمي في صفحة المصدر.</p>' +
-      '</div>';
-    el.querySelector('.toggle').addEventListener('click', (e) => {
-      const d = el.querySelector('.details');
-      d.classList.toggle('open');
-      e.target.textContent = d.classList.contains('open') ? 'إخفاء التفاصيل' : 'المميزات والتفاصيل';
-    });
-    cards.appendChild(el);
-  }
-}
-
-function buildChips(id, values, key) {
-  const box = document.getElementById(id);
-  for (const v of values) {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "chip" + (state[key] === v ? " on" : "");
-    b.textContent = v;
-    b.onclick = () => { state[key] = v; buildChips(id, values, key); render(); };
-    box.appendChild(b);
-  }
-  box.innerHTML = "";
-  for (const v of values) {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "chip" + (state[key] === v ? " on" : "");
-    b.textContent = v;
-    b.onclick = () => { state[key] = v; refresh(); };
-    box.appendChild(b);
-  }
-}
-
-function refresh() {
-  const srcs = ["الكل", ...new Set(DATA.items.map((i) => i.source))];
-  const degs = ["الكل", ...new Set(DATA.items.flatMap((i) => i.degrees))];
-  buildChips("srcChips", srcs, "src");
-  buildChips("degChips", degs, "deg");
-  render();
-}
-
-document.getElementById("search").addEventListener("input", (e) => {
-  state.q = e.target.value;
-  render();
-});
-
-document.getElementById("updated").textContent = "آخر تحديث: " + fmtUpdated(DATA.updated);
-document.getElementById("sources").innerHTML =
-  [...new Set(DATA.items.map((i) => i.source))].map((s) => "<li>" + esc(s) + "</li>").join("");
-refresh();
+for(const [id,key] of [['country','country'],['degree','degree'],['funding','funding']]){$(id).onchange=e=>{state[key]=e.target.value;render();};}
+for(const [id,values] of [['country',[...new Set(DATA.items.map(country))]],['degree',[...new Set(DATA.items.flatMap(i=>i.degrees||[]))]]])for(const v of values){const o=document.createElement('option');o.value=v;o.textContent=v;$(id).append(o);}
+$('search').oninput=e=>{state.q=e.target.value;render();};$('reset').onclick=()=>{for(const k in state)state[k]='';for(const id of ['search','country','degree','funding'])$(id).value='';render();};
+$('updated').textContent='آخر تحديث للبيانات: '+new Date(DATA.updated).toLocaleString('ar',{timeZone:'Asia/Hebron'})+' بتوقيت فلسطين';
+$('sources').innerHTML=[...new Set(DATA.items.map(i=>i.source))].map(s=>'<li>'+esc(s)+'</li>').join('');
+window.addEventListener('hashchange',route);render();route();
 </script>
 </body>
 </html>
