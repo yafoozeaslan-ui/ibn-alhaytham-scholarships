@@ -1,0 +1,77 @@
+{
+  "https://www.opportunitiesforafricans.com/the-university-of-cambridge-mastercard-foundation-scholars-programme-2027-2028/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.mastercardfoundation.fund.cam.ac.uk/apply/how-apply",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.scholars4dev.com/politecnico-milano-merit-based-international-scholarships/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.polimi.it/en/international-prospective-students/laurea-magistrale-programmes-equivalent-to-master-of-science/scholarships/merit-based-scholarships/",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.scholars4dev.com/mastercard-foundation-afox-graduate-scholarships-oxford-mba/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.sbs.ox.ac.uk/oxford-experience/scholarships-and-funding/afox-graduate-scholarships",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.scholars4dev.com/imperial-presidents-phd-scholarships/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.scholars4dev.com/american-university-scholarships-for-international-students/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.american.edu/admissions/international/au-egls-apply.cfm",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.scholars4dev.com/carleton-prestige-scholarships/": {
+    "outcome": "reviewed",
+    "official_url": "https://carleton.ca/awards/awards/scholarships/prestige/",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.scholars4dev.com/erasmus-university-holland-scholarship/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.ihs.nl/en/education/scholarships/nl-scholarship",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.scholars4dev.com/university-of-padua-international-scholarships/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://mladiinfo.eu/2026/07/08/masters-programme-human-rights-democratistaion-caucasus-global-campus-caucasus/": {
+    "outcome": "reviewed",
+    "official_url": "https://regionalmaster.net/application-procedure/",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://greatyop.com/university-twente-kipaji-scholarship/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.utwente.nl/en/education/scholarship-finder/kipaji-scholarship/",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://greatyop.com/university-twente-scholarship/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://greatyop.com/special-scholarship-program/": {
+    "outcome": "reviewed",
+    "official_url": "https://www.kochi-tech.ac.jp/english/admission/ssp/application-guideline.html",
+    "note": "استُبدل ملخص التجميع بسجل مراجع من المصدر الرسمي مع دليل مسار خاص."
+  },
+  "https://www.opportunitiesforafricans.com/the-pps-foundations-bursary-programme-2027-for-young-south-african-students/": {
+    "outcome": "excluded",
+    "reason_ar": "وجود برنامج PPS مؤكد في موقع المؤسسة، لكن لم نثبت من مصدر المؤسسة مسار حملة 2027 أو ربط نموذج الطرف الثالث بها. لا ننشر رابط جمع مستندات غير مربوط بمصدر الجهة.",
+    "checked_source": "https://www.pps.co.za/mutuality/pps-foundation"
+  },
+  "https://www.scholars4dev.com/adb-scholarships-at-univeristy-of-auckland/": {
+    "outcome": "excluded",
+    "reason_ar": "برنامج ADB-JSP نفسه موثق، لكن لم نثبت من مصدر الجامعة دورة أوكلاند الحالية وطريقة تقديمها المحددة. لا ننشر ادعاء أهلية أو موعد خاص بأوكلاند استنادًا لملخص تجميع.",
+    "checked_source": "https://www.adb.org/work-with-us/careers/japan-scholarship-program"
+  },
+  "https://greatyop.com/university-melbourne-scholarships/": {
+    "outcome": "excluded",
+    "reason_ar": "عنوان تجميعي عام لجميع منح ملبورن وليس منحة واحدة. استُبعد العنوان العام وأُضيف برنامج الدراسات العليا البحثية المحدد من مصدر الجامعة.",
+    "checked_source": "https://scholarships.unimelb.edu.au/awards/graduate-research-scholarships"
+  }
+}
