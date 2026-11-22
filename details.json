@@ -15,7 +15,12 @@
       "أكمل الطلب والتوصية المطلوبة قبل 31 ديسمبر 2026 لفئة غير الأوروبيين. تحقّق من ساعة الإغلاق لدى البرنامج، لأن الصفحة تعرض معلومات زمنية غير متسقة."
     ],
     "details_verified_at": "2026-11-22",
-    "details_source": "https://www.emle.org/application"
+    "details_source": "https://www.emle.org/application",
+    "audience": "eligible",
+    "country_codes": [],
+    "reviewed": true,
+    "guide_kind": "source",
+    "guide_source": "https://www.emle.org/application"
   },
   "https://www.gold.ac.uk/fees-funding/scholarships/palestinian-scholarship/": {
     "steps_ar": [
@@ -24,7 +29,14 @@
       "أرسل طلب المنحة قبل 31 مارس 2027. الاختيار تنافسي."
     ],
     "details_verified_at": "2026-11-22",
-    "details_source": "https://www.gold.ac.uk/fees-funding/scholarships/palestinian-scholarship/"
+    "details_source": "https://www.gold.ac.uk/fees-funding/scholarships/palestinian-scholarship/",
+    "audience": "dedicated",
+    "country_codes": [
+      "GB"
+    ],
+    "reviewed": true,
+    "guide_kind": "source",
+    "guide_source": "https://www.gold.ac.uk/fees-funding/scholarships/palestinian-scholarship/"
   },
   "https://sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate/gaza": {
     "steps_ar": [
@@ -34,6 +46,107 @@
       "أرسل الطلب قبل الساعة 1 ظهرًا بتوقيت المملكة المتحدة يوم 18 مايو 2027."
     ],
     "details_verified_at": "2026-11-22",
-    "details_source": "https://sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate/gaza"
+    "details_source": "https://sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate/gaza",
+    "audience": "dedicated",
+    "country_codes": [
+      "GB"
+    ],
+    "reviewed": true,
+    "guide_kind": "source",
+    "guide_source": "https://sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate/gaza"
+  },
+  "https://igts.kemdiktisaintek.go.id/scholarships/palestine-scholarship": {
+    "audience": "dedicated",
+    "country_codes": [
+      "ID"
+    ],
+    "reviewed": true,
+    "guide_kind": "limited",
+    "guide_note": "رابط Apply Now في إعلان الوزارة ينقل إلى نطاق مختلف يعرض إشعار انتقال. لم نتحقق من نموذج إرسال فعّال أو من هوية صفحة التحويل؛ لذلك لا نؤكد إمكانية التقديم الآن. استخدم تواصل الوزارة من موقعها الأصلي قبل إرسال معلومات.",
+    "steps_ar": [
+      "راجع إعلان ISPaS وتأكد من الجنسية الفلسطينية ومن أن الدرجة ماجستير أو دكتوراه.",
+      "زر Apply Now في الإعلان يقود إلى موقع الدراسة في إندونيسيا؛ الصفحة الحالية تعرض إشعار انتقال، وليس نموذج تقديم.",
+      "ارجع إلى موقع الوزارة الأصلي واستخدم قسم التواصل للاستفسار عن مسار ISPaS المتاح. لا ترسل مستندات شخصية أو مالية إلى صفحة التحويل قبل التحقق منها."
+    ],
+    "guide_source": "https://studyinindonesia.org/palsetine-scholarship/apply",
+    "guide_labels": [
+      "راجع إعلان ISPaS",
+      "رابط التقديم قيد الانتقال",
+      "تحقق عبر موقع الوزارة"
+    ],
+    "details_verified_at": "2026-11-22",
+    "application_unavailable": true
+  },
+  "https://stipendiumhungaricum.hu/": {
+    "audience": "eligible",
+    "country_codes": [
+      "HU"
+    ],
+    "reviewed": true,
+    "guide_kind": "source",
+    "steps_ar": [
+      "افتح صفحة Apply الرسمية واقرأ دعوة التقديم الخاصة بدرجتك، ثم تحقق من البرامج المسموحة لبلدك.",
+      "راجع متطلبات جهة الترشيح في بلدك؛ لا يكفي الطلب الإلكتروني وحده إذا كان الترشيح مطلوبًا.",
+      "استخدم Apply Here للوصول إلى نظام Tempus، وسجل حسابك ثم املأ الطلب وارفع المستندات التي تحددها الدعوة.",
+      "أرسل الطلب في الموعد الرسمي للدورة، وتابع رسالة تأكيد الإرسال والترشيح والقبول المؤسسي. الصفحة التي راجعناها تعرض جدول دورة سابقة، فلا تعتمد عليها لتخمين موعد 2027/28."
+    ],
+    "guide_source": "https://stipendiumhungaricum.hu/apply/",
+    "guide_labels": [
+      "اختر دعوة الدرجة والبلد",
+      "راجع جهة الترشيح",
+      "نظام Tempus والمستندات",
+      "الإرسال وتأكيد الترشيح"
+    ],
+    "details_verified_at": "2026-11-22"
+  },
+  "https://www.turkiyeburslari.gov.tr/calendar": {
+    "audience": "eligible",
+    "country_codes": [
+      "TR"
+    ],
+    "reviewed": true,
+    "guide_kind": "source",
+    "steps_ar": [
+      "ابحث عن برنامج مناسب في موقع المنح التركية، وراجع لغة الدراسة وشروط الجامعة قبل اختيار التخصصات.",
+      "ادخل إلى نظام Türkiye Scholarships Application System (TBBS) من رابط Application/Login الرسمي، وسجل حسابك الشخصي.",
+      "ارفع الهوية أو جواز السفر والصورة والشهادة وكشف الدرجات، وأضف نتائج الاختبارات فقط عندما يطلبها البرنامج. للدكتوراه أضف مقترح البحث وعينة من بحث سابق.",
+      "اختر من البرامج المتاحة لك داخل النظام، وأكمل الطلب خلال الفترة السنوية التي تعلنها الجهة. لا تفترض أن استقبال دورة 2027 بدأ قبل نشر إعلانها."
+    ],
+    "documents_ar": [
+      "هوية أو جواز سفر صالح وصورة حديثة.",
+      "شهادة التخرج أو شهادة مؤقتة وكشف الدرجات.",
+      "نتائج اختبارات القبول واللغة عند اشتراطها من البرنامج.",
+      "للدكتوراه: مقترح بحث وعينة مكتوبة من بحث سابق."
+    ],
+    "guide_source": "https://www.turkiyeburslari.gov.tr/applysteps",
+    "guide_labels": [
+      "اختر البرنامج ولغة الدراسة",
+      "ادخل إلى TBBS",
+      "جهز المستندات المطلوبة",
+      "أكمل الطلب في موعده"
+    ],
+    "details_verified_at": "2026-11-22"
+  },
+  "https://www.unibg.it/bandi/call-for-applications-palestine-student-grants-academic-year-20262027": {
+    "audience": "dedicated",
+    "country_codes": [
+      "IT"
+    ],
+    "reviewed": true,
+    "guide_kind": "closed",
+    "steps_ar": [
+      "هذه دورة 2026/27، وقد انتهى التقديم في 14 سبتمبر 2026. الدليل يشرح مسار الدورة السابقة ولا يعني فتح طلب جديد.",
+      "كانت المنحة مخصصة لفلسطينيين مقيمين في الأراضي الفلسطينية لدراسة ماجستير في بيرغامو، مع استثناء برنامج علم النفس السريري المحدود القبول.",
+      "أعلنت الجامعة استبدال النموذج القديم بنموذج Google جديد ابتداء من 7 سبتمبر؛ وأكدت أن الطلبات المرسلة إلى النموذج القديم تظل صالحة ولا تعاد.",
+      "لأي دورة لاحقة، انتظر إعلان الجامعة الجديد واستخدم رابطه ومتطلباته، لا نموذج الدورة المغلقة."
+    ],
+    "guide_source": "https://www.unibg.it/bandi/call-for-applications-palestine-student-grants-academic-year-20262027",
+    "guide_labels": [
+      "الدورة مغلقة",
+      "راجع أهلية ماجستير بيرغامو",
+      "النموذج السابق تغيّر",
+      "انتظر إعلان دورة جديدة"
+    ],
+    "details_verified_at": "2026-11-22"
   }
 }
