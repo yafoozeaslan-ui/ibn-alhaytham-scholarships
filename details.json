@@ -20,7 +20,13 @@
     "country_codes": [],
     "reviewed": true,
     "guide_kind": "source",
-    "guide_source": "https://www.emle.org/application"
+    "guide_source": "https://www.emle.org/application",
+    "guide_route": [
+      "فئة المتقدم وشروط EMLE",
+      "منصة التقديم الرسمية",
+      "الموصي يرسل التوصية",
+      "اختيار منحة إيراسموس والإرسال"
+    ]
   },
   "https://www.gold.ac.uk/fees-funding/scholarships/palestinian-scholarship/": {
     "steps_ar": [
@@ -36,7 +42,13 @@
     ],
     "reviewed": true,
     "guide_kind": "source",
-    "guide_source": "https://www.gold.ac.uk/fees-funding/scholarships/palestinian-scholarship/"
+    "guide_source": "https://www.gold.ac.uk/fees-funding/scholarships/palestinian-scholarship/",
+    "guide_route": [
+      "طلب برنامج غولدسميث",
+      "عرض دراسة مؤهل",
+      "نموذج المنحة من 29 يناير",
+      "إرسال قبل 31 مارس 2027"
+    ]
   },
   "https://sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate/gaza": {
     "steps_ar": [
@@ -53,7 +65,13 @@
     ],
     "reviewed": true,
     "guide_kind": "source",
-    "guide_source": "https://sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate/gaza"
+    "guide_source": "https://sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate/gaza",
+    "guide_route": [
+      "أهلية منحة غزة",
+      "عرض قبول ماجستير",
+      "نموذج المنحة نهاية مارس",
+      "إرسال قبل 18 مايو 2027"
+    ]
   },
   "https://igts.kemdiktisaintek.go.id/scholarships/palestine-scholarship": {
     "audience": "dedicated",
@@ -75,7 +93,13 @@
       "تحقق عبر موقع الوزارة"
     ],
     "details_verified_at": "2026-11-22",
-    "application_unavailable": true
+    "application_unavailable": true,
+    "guide_route": [
+      "إعلان ISPaS على موقع الوزارة",
+      "رابط Apply Now",
+      "نطاق آخر: إشعار انتقال",
+      "الرجوع لتواصل الوزارة الأصلية"
+    ]
   },
   "https://stipendiumhungaricum.hu/": {
     "audience": "eligible",
@@ -97,7 +121,13 @@
       "نظام Tempus والمستندات",
       "الإرسال وتأكيد الترشيح"
     ],
-    "details_verified_at": "2026-11-22"
+    "details_verified_at": "2026-11-22",
+    "guide_route": [
+      "دعوة الدرجة والبلد",
+      "جهة الترشيح في بلدك",
+      "Tempus: الطلب والمستندات",
+      "إرسال وتأكيد الترشيح"
+    ]
   },
   "https://www.turkiyeburslari.gov.tr/calendar": {
     "audience": "eligible",
@@ -125,7 +155,13 @@
       "جهز المستندات المطلوبة",
       "أكمل الطلب في موعده"
     ],
-    "details_verified_at": "2026-11-22"
+    "details_verified_at": "2026-11-22",
+    "guide_route": [
+      "اختيار البرنامج ولغته",
+      "TBBS: حساب الطلب",
+      "المؤهلات والاختبارات المطلوبة",
+      "التخصصات المتاحة والإرسال"
+    ]
   },
   "https://www.unibg.it/bandi/call-for-applications-palestine-student-grants-academic-year-20262027": {
     "audience": "dedicated",
@@ -147,6 +183,12 @@
       "النموذج السابق تغيّر",
       "انتظر إعلان دورة جديدة"
     ],
-    "details_verified_at": "2026-11-22"
+    "details_verified_at": "2026-11-22",
+    "guide_route": [
+      "دورة بيرغامو مغلقة",
+      "كان المسار عبر Google Form",
+      "الطلبات القديمة تبقى صالحة",
+      "لا تقديم جديد دون إعلان جديد"
+    ]
   }
-}
+      }
