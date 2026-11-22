@@ -427,6 +427,14 @@ def main():
                 added += 1
         print(f"dashboard items applied: {replaced} updated, {added} added")
 
+    # Supplementary source-checked documents and steps. Owner fields take priority.
+    extra_file = HERE / "details.json"
+    if extra_file.exists():
+        extra = json.loads(extra_file.read_text(encoding="utf-8"))
+        for it in results:
+            for key, value in extra.get(it["link"], {}).items():
+                it.setdefault(key, value)
+
     # وسم المنح المنتهية: كل مواعيدها المنقولة في الماضي
     today = datetime.now(timezone.utc).date()
     today = (today.year, today.month, today.day)
@@ -445,7 +453,7 @@ def main():
 
     tpl = TEMPLATE.read_text(encoding="utf-8")
     payload = json.dumps({"updated": now, "count": len(results), "items": results},
-                         ensure_ascii=False)
+                         ensure_ascii=False).replace("</", "<\\/")
     html = tpl.replace("/*__DATA__*/null", payload, 1)
     OUT.write_text(html, encoding="utf-8")
     print(f"built {OUT.name}: {len(results)} scholarships, updated {now}")
