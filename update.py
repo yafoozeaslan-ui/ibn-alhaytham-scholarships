@@ -34,9 +34,8 @@ FEEDS = [
     ("Opportunities for Africans", "https://www.opportunitiesforafricans.com/feed/"),
 ]
 
-# الموقع موجّه للطلاب الفلسطينيين: لا يدخل صفحة الفهرس من تجميع المصادر
-# إلا ما يذكر فلسطين صراحة (عنوانا أو نصا أو أهلية منقولة من صفحة المصدر)،
-# إضافة إلى المنح المُتحقق منها يدويا في curated.json.
+# اكتشاف عالمي. المراجعة والأهلية الفلسطينية موسومتان صراحة في البيانات اليدوية.
+# لا تعني إشارة فلسطين في مقال عام أن المنحة مخصصة للفلسطينيين.
 PALESTINE_RE = re.compile(r"palestin|\u0641\u0644\u0633\u0637\u064a\u0646", re.I)
 CURATED_FILE = HERE / "curated.json"
 
@@ -45,7 +44,7 @@ CURATED_FILE = HERE / "curated.json"
 DASHBOARD_URL = "https://ibn-alhaytham-admin.yafoozeaslan.workers.dev/scholarships.json"
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 scholarship-site-updater"
-MAX_ITEMS_PER_FEED = 25
+MAX_ITEMS_PER_FEED = 10
 TIMEOUT = 30
 
 DEGREE_MAP = [
@@ -344,9 +343,6 @@ def main():
                     skipped += 1
                     continue
                 blob = it["title"] + " " + (it["desc"] or "")
-                if not PALESTINE_RE.search(blob):
-                    skipped += 1
-                    continue
                 results.append(normalize(it, name))
                 kept += 1
                 if kept >= MAX_ITEMS_PER_FEED:
@@ -364,18 +360,11 @@ def main():
     enriched = sum(1 for it in results if it["details_from"] == "page")
     print(f"enriched from source pages: {enriched}/{len(results)}")
 
-    # تحقق ثان بعد الإثراء: لو نص صفحة المصدر نفسها لا يذكر فلسطين، نستبعد العنصر
-    before = len(results)
-    results = [
-        it for it in results
-        if PALESTINE_RE.search(
-            it["title"] + " " + (it["summary"] or "") + " "
-            + " ".join(it["benefits"]) + " " + " ".join(it["eligibility"])
-        )
-    ]
-    dropped = before - len(results)
-    if dropped:
-        print(f"dropped after enrichment (no Palestine mention on source page): {dropped}")
+    # Global discovery is intentionally separate from reviewed opportunities.
+    for it in results:
+        it["reviewed"] = False
+        it["audience"] = "discovery"
+        it["status"] = "verify"
 
     # مصدر الحقيقة: لوحة التحكم (إن كانت مفعّلة). نجلب نسختها المنشورة
     # ونحترم حذف المستخدم (tombstones) فلا تُحيى منحة حذفها من الاكتشاف التلقائي.
@@ -403,6 +392,8 @@ def main():
     # دمج المنح المُتحقق منها يدويا (تتجاوز المرشح لأن أهليتها موثقة من مصدرها)
     if CURATED_FILE.exists():
         curated = json.loads(CURATED_FILE.read_text(encoding="utf-8"))
+        curated_titles = {c["title"].strip().casefold() for c in curated}
+        results = [it for it in results if it["title"].strip().casefold() not in curated_titles]
         existing = {it["link"] for it in results}
         added = 0
         for c in curated:
@@ -435,6 +426,25 @@ def main():
             for key, value in extra.get(it["link"], {}).items():
                 it.setdefault(key, value)
 
+    # Country metadata is a static ISO/CLDR list, not a coverage claim.
+    countries = json.loads((HERE / "countries.json").read_text(encoding="utf-8"))
+    for it in results:
+        if not it.get("country_codes"):
+            location = it.get("study_in_ar") or it.get("study_in") or ""
+            matched = []
+            for c in countries:
+                aliases = [a for a in c["aliases"] if len(a) > 2]
+                if any(location.casefold() == a.casefold() for a in aliases):
+                    matched.append(c["code"])
+            if not matched and not location:
+                # A title explicitly saying 'in COUNTRY' is a location clue.
+                for c in countries:
+                    if any(re.search(r"\bin\s+" + re.escape(a) + r"(?:\b|$)", it.get("title", ""), re.I) for a in c["aliases"] if len(a)>3 and a.isascii()):
+                        matched.append(c["code"])
+            it["country_codes"] = matched
+            if matched and not location:
+                it["study_in_ar"] = " / ".join(c["ar"] for c in countries if c["code"] in matched)
+
     # وسم المنح المنتهية: كل مواعيدها المنقولة في الماضي
     today = datetime.now(timezone.utc).date()
     today = (today.year, today.month, today.day)
@@ -446,13 +456,13 @@ def main():
             it["status"] = "closed" if it["closed"] else "open"
         if it["status"] == "closed":
             it["closed"] = True
-    STATUS_RANK = {"open": 0, "upcoming": 1, "unannounced": 2, "closed": 3}
+    STATUS_RANK = {"open": 0, "upcoming": 1, "unannounced": 2, "verify": 3, "closed": 4}
     results.sort(key=lambda x: x["published"], reverse=True)
     results.sort(key=lambda x: STATUS_RANK.get(x["status"], 0))
     now = datetime.now(timezone.utc).isoformat()
 
     tpl = TEMPLATE.read_text(encoding="utf-8")
-    payload = json.dumps({"updated": now, "count": len(results), "items": results},
+    payload = json.dumps({"updated": now, "count": len(results), "countries": countries, "items": results},
                          ensure_ascii=False).replace("</", "<\\/")
     html = tpl.replace("/*__DATA__*/null", payload, 1)
     OUT.write_text(html, encoding="utf-8")
