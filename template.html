@@ -61,7 +61,10 @@
     background: var(--card); border: 1px solid var(--line); border-radius: 16px;
     padding: 16px 18px; display: block;
   }
-  .card h2 { font-size: 16.5px; font-weight: 700; line-height: 1.5; direction: ltr; text-align: start; }
+  .card h2 { font-size: 16.5px; font-weight: 700; line-height: 1.5; }
+  .card h2.en { direction: ltr; text-align: start; }
+  .card .en-name { direction: ltr; text-align: start; display: block; font-size: 12.5px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .group-title { grid-column: 1 / -1; font-size: 15px; font-weight: 800; color: var(--accent); margin-top: 14px; border-bottom: 2px solid var(--accent-soft); padding-bottom: 4px; }
   .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
   .badge {
     font-size: 12px; border-radius: 999px; padding: 2px 10px; font-weight: 600;
@@ -93,8 +96,10 @@
   }
   .details.open { display: block; }
   .details h3 { font-size: 13.5px; color: var(--accent); margin-bottom: 4px; }
-  .details ul { margin: 0 18px 10px; direction: ltr; text-align: start; color: var(--muted); }
-  .details p.sum { direction: ltr; text-align: start; color: var(--muted); margin-bottom: 10px; }
+  .details ul { margin: 0 18px 10px; color: var(--muted); }
+  .details ul.en { direction: ltr; text-align: start; }
+  .details p.sum { color: var(--muted); margin-bottom: 10px; }
+  .details p.sum.en { direction: ltr; text-align: start; }
   .details .src { color: var(--muted); font-size: 13px; }
   .empty { text-align: center; color: var(--muted); padding: 40px 0; display: none; }
   footer {
@@ -175,8 +180,15 @@ function matches(it) {
   if (state.src !== "الكل" && it.source !== state.src) return false;
   if (state.deg !== "الكل" && !it.degrees.includes(state.deg)) return false;
   if (!q) return true;
-  return (it.title + " " + (it.study_in || "") + " " + (it.summary || "")).toLowerCase().includes(q);
+  return (it.title + " " + (it.title_ar || "") + " " + (it.study_in || "") + " " + (it.study_in_ar || "") + " " + (it.summary || "") + " " + (it.summary_ar || "")).toLowerCase().includes(q);
 }
+
+const GROUPS = [
+  ["open", "مفتوحة الآن للتقديم"],
+  ["upcoming", "تفتح قريباً بموعد مؤكد"],
+  ["unannounced", "لم يُعلن موعد الدورة بعد"],
+  ["closed", "انتهى موعدها بحسب المصدر"],
+];
 
 function render() {
   const items = DATA.items.filter(matches);
@@ -185,12 +197,25 @@ function render() {
   const cards = document.getElementById("cards");
   cards.innerHTML = "";
   document.getElementById("empty").style.display = items.length ? "none" : "block";
+  let lastGroup = null;
   for (const it of items) {
+    const g = GROUPS.find(([k]) => k === it.status);
+    const gLabel = g ? g[1] : GROUPS[0][1];
+    if (gLabel !== lastGroup) {
+      lastGroup = gLabel;
+      const h = document.createElement("div");
+      h.className = "group-title";
+      h.textContent = gLabel;
+      cards.appendChild(h);
+    }
     const isNew = !it.closed && now - new Date(it.published).getTime() < WEEK;
     const el = document.createElement("div");
     el.className = "card" + (it.closed ? " closed" : "");
+    const ar = !!it.title_ar;
     el.innerHTML =
-      '<h2>' + esc(it.title) + '</h2>' +
+      (ar
+        ? '<h2>' + esc(it.title_ar) + '</h2><span class="en-name">' + esc(it.title) + '</span>'
+        : '<h2 class="en">' + esc(it.title) + '</h2>') +
       '<div class="badges">' +
         '<span class="badge src">' + esc(it.source) + '</span>' +
         (it.closed ? '<span class="badge closed">انتهى الموعد بحسب المصدر</span>' : '') +
@@ -204,24 +229,23 @@ function render() {
         (it.deadline
           ? '<span class="deadline">الموعد النهائي (بحسب المصدر): <bdi>' + arDeadline(it.deadline) + '</bdi></span>'
           : '<span>الموعد النهائي غير مؤكد في إعلان المصدر</span>') +
-        (it.study_in ? '<span>الدراسة في: <bdi>' + esc(it.study_in) + '</bdi></span>' : '') +
+        ((it.study_in_ar || it.study_in) ? '<span>الدراسة في: <bdi>' + esc(it.study_in_ar || it.study_in) + '</bdi></span>' : '') +
         '<span>نُشرت: ' + fmtDate(it.published) + '</span>' +
       '</div>' +
       '<a class="apply" href="' + esc(it.link) + '" target="_blank" rel="noopener">صفحة المنحة على موقع المصدر ↗</a>' +
       '<button type="button" class="toggle">المميزات والتفاصيل</button>' +
       '<div class="details">' +
-        (it.benefits && it.benefits.length
-          ? '<h3>المميزات والتمويل (بحسب إعلان المصدر)</h3><ul>' +
-            it.benefits.map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
+        ((ar ? it.benefits_ar : it.benefits) && (ar ? it.benefits_ar : it.benefits).length
+          ? '<h3>المميزات والتمويل (بحسب إعلان المصدر)</h3><ul class="' + (ar ? '' : 'en') + '">' +
+            (ar ? it.benefits_ar : it.benefits).map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
           : '') +
-        (it.eligibility && it.eligibility.length
-          ? '<h3>الأهلية (بحسب إعلان المصدر)</h3><ul>' +
-            it.eligibility.map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
+        ((ar ? it.eligibility_ar : it.eligibility) && (ar ? it.eligibility_ar : it.eligibility).length
+          ? '<h3>الأهلية (بحسب إعلان المصدر)</h3><ul class="' + (ar ? '' : 'en') + '">' +
+            (ar ? it.eligibility_ar : it.eligibility).map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
           : '') +
-        ((!it.benefits || !it.benefits.length) && (!it.eligibility || !it.eligibility.length)
-          ? '<p class="sum" style="direction:rtl">تفاصيل التمويل والأهلية غير مذكورة في نص إعلان المصدر؛ راجع صفحة المنحة للتفاصيل الكاملة.</p>'
+        ((ar ? it.summary_ar : it.summary)
+          ? '<h3>عن المنحة' + (ar ? '' : ' (نص المصدر)') + '</h3><p class="sum' + (ar ? '' : ' en') + '">' + esc(ar ? it.summary_ar : it.summary) + '</p>'
           : '') +
-        (it.summary ? '<h3>عن المنحة (نص المصدر)</h3><p class="sum">' + esc(it.summary) + '</p>' : '') +
         '<p class="src">المصدر: ' + esc(it.source) + '. التفاصيل الكاملة ورابط التقديم الرسمي في صفحة المصدر.</p>' +
       '</div>';
     el.querySelector('.toggle').addEventListener('click', (e) => {
