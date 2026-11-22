@@ -40,6 +40,10 @@ FEEDS = [
 PALESTINE_RE = re.compile(r"palestin|\u0641\u0644\u0633\u0637\u064a\u0646", re.I)
 CURATED_FILE = HERE / "curated.json"
 
+# رابط النسخة المنشورة من لوحة التحكم (Cloudflare Worker). يُفعّل بملء الرابط
+# بعد نشر اللوحة؛ عندما يكون فارغا يعمل الموقع كما كان (curated + اكتشاف تلقائي).
+DASHBOARD_URL = "https://ibn-alhaytham-admin.yafoozeaslan.workers.dev/scholarships.json"
+
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 scholarship-site-updater"
 MAX_ITEMS_PER_FEED = 25
 TIMEOUT = 30
@@ -373,18 +377,55 @@ def main():
     if dropped:
         print(f"dropped after enrichment (no Palestine mention on source page): {dropped}")
 
+    # مصدر الحقيقة: لوحة التحكم (إن كانت مفعّلة). نجلب نسختها المنشورة
+    # ونحترم حذف المستخدم (tombstones) فلا تُحيى منحة حذفها من الاكتشاف التلقائي.
+    # لو تعذّر جلب اللوحة: لا نغيّر المحتوى إطلاقا ونخرج دون التزام.
+    managed = None
+    tombstones = set()
+    if DASHBOARD_URL:
+        try:
+            raw = fetch(DASHBOARD_URL)
+            payload = json.loads(raw.decode("utf-8"))
+            managed = payload.get("items", [])
+            tombstones = set(payload.get("deleted", []))
+            print(f"dashboard: {len(managed)} managed items, {len(tombstones)} tombstones")
+        except Exception as e:
+            print(f"[dashboard fail] {DASHBOARD_URL}: {e} — leaving site unchanged", file=sys.stderr)
+            return
+    # استبعاد المكتشف تلقائيا الذي حذفه المستخدم من اللوحة
+    if tombstones:
+        before = len(results)
+        results = [it for it in results if it["link"] not in tombstones]
+        dropped = before - len(results)
+        if dropped:
+            print(f"skipped auto items deleted by user: {dropped}")
+
     # دمج المنح المُتحقق منها يدويا (تتجاوز المرشح لأن أهليتها موثقة من مصدرها)
     if CURATED_FILE.exists():
         curated = json.loads(CURATED_FILE.read_text(encoding="utf-8"))
         existing = {it["link"] for it in results}
         added = 0
         for c in curated:
-            if c["link"] in existing:
+            if c["link"] in existing or c["link"] in tombstones:
                 continue
             c.setdefault("details_from", "curated")
             results.append(c)
             added += 1
         print(f"curated items merged: {added} of {len(curated)}")
+
+    # عناصر اللوحة تسبق أي مصدر آخر: تعديلات المستخدم وحالاته اليدوية
+    if managed:
+        by_link = {it["link"]: it for it in results}
+        replaced = added = 0
+        for m in managed:
+            m.setdefault("details_from", "dashboard")
+            if m["link"] in by_link:
+                by_link[m["link"]].update(m)
+                replaced += 1
+            else:
+                results.append(m)
+                added += 1
+        print(f"dashboard items applied: {replaced} updated, {added} added")
 
     # وسم المنح المنتهية: كل مواعيدها المنقولة في الماضي
     today = datetime.now(timezone.utc).date()
