@@ -414,6 +414,9 @@ def main():
         replaced = added = 0
         for m in managed:
             m.setdefault("details_from", "dashboard")
+            if m["link"] not in by_link:
+                m.setdefault("audience", "owner")
+                m.setdefault("reviewed", False)
             if m["link"] in by_link:
                 by_link[m["link"]].update(m)
                 replaced += 1
