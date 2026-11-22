@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ابن الهيثم للمنح الدراسية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --ink: #1c1a16;
+    --muted: #6b675f;
+    --accent: #0d6b4f;
+    --accent-soft: #e3f2ec;
+    --warn: #b45309;
+    --warn-soft: #fdf0e0;
+    --line: #e7e3da;
+    --new: #1d4ed8;
+    --new-soft: #e8effd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Tahoma, "Noto Kufi Arabic", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 20px 16px 48px; }
+  header.site { padding: 24px 0 8px; }
+  header.site h1 { font-size: 28px; font-weight: 800; }
+  header.site p.sub { color: var(--muted); margin-top: 4px; font-size: 15px; }
+  .brand-type .n1 { font-family: 'Amiri', 'Noto Naskh Arabic', serif; font-size: 54px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+  .brand-type .flourish { display: block; width: 300px; height: 30px; margin-top: -8px; }
+  .brand-type .n2 { font-size: 20px; font-weight: 800; margin-top: 2px; }
+  .tagline { color: var(--accent); font-weight: 700; font-size: 15px; margin-top: 6px; }
+
+  .updated {
+    display: inline-block; margin-top: 10px; font-size: 13px;
+    background: var(--accent-soft); color: var(--accent);
+    border-radius: 999px; padding: 4px 12px; font-weight: 600;
+  }
+  .controls { margin: 20px 0 16px; display: flex; flex-direction: column; gap: 10px; }
+  #search {
+    width: 100%; padding: 12px 14px; font-size: 15px; font-family: inherit;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--card);
+  }
+  #search:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    border: 1px solid var(--line); background: var(--card); color: var(--muted);
+    border-radius: 999px; padding: 5px 13px; font-size: 13px; font-family: inherit;
+    cursor: pointer;
+  }
+  .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .count { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .cards { display: grid; gap: 12px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 16px 18px; display: block;
+  }
+  .card h2 { font-size: 16.5px; font-weight: 700; line-height: 1.5; direction: ltr; text-align: start; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .badge {
+    font-size: 12px; border-radius: 999px; padding: 2px 10px; font-weight: 600;
+  }
+  .badge.src { background: #f0ede6; color: var(--muted); }
+  .badge.new { background: var(--new-soft); color: var(--new); }
+  .badge.funded { background: var(--accent-soft); color: var(--accent); }
+  .badge.deg { background: #f0ede6; color: var(--ink); }
+  .badge.closed { background: var(--warn-soft); color: var(--warn); }
+  .badge.soon { background: var(--new-soft); color: var(--new); }
+  .card.closed { opacity: 0.75; }
+  .meta { margin-top: 10px; font-size: 13.5px; color: var(--muted); display: grid; gap: 3px; }
+  .meta .deadline { color: var(--warn); font-weight: 700; }
+  .summary { margin-top: 8px; font-size: 14px; color: var(--muted); direction: ltr; text-align: start; }
+  .apply {
+    display: inline-block; margin-top: 12px; background: var(--accent); color: #fff;
+    text-decoration: none; font-size: 14px; font-weight: 700;
+    padding: 8px 18px; border-radius: 10px;
+  }
+  .toggle {
+    display: inline-block; margin-top: 12px; margin-inline-start: 8px;
+    background: none; border: 1px solid var(--accent); color: var(--accent);
+    font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+    padding: 7px 16px; border-radius: 10px;
+  }
+  .details {
+    display: none; margin-top: 12px; border-top: 1px dashed var(--line);
+    padding-top: 12px; font-size: 14px;
+  }
+  .details.open { display: block; }
+  .details h3 { font-size: 13.5px; color: var(--accent); margin-bottom: 4px; }
+  .details ul { margin: 0 18px 10px; direction: ltr; text-align: start; color: var(--muted); }
+  .details p.sum { direction: ltr; text-align: start; color: var(--muted); margin-bottom: 10px; }
+  .details .src { color: var(--muted); font-size: 13px; }
+  .empty { text-align: center; color: var(--muted); padding: 40px 0; display: none; }
+  footer {
+    margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 13px;
+  }
+  footer ul { margin: 6px 18px 0; }
+  @media (min-width: 640px) {
+    header.site .n1 { font-size: 66px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="brand-type">
+      <h1><span class="n1">ابن الهيثم</span><svg class="flourish" viewBox="0 0 300 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 12 C 100 28, 200 28, 268 10" fill="none" stroke="#e9b949" stroke-width="5" stroke-linecap="round"/><polygon points="284,4 287.3,11.4 295.4,11.8 289.2,16.9 291.4,24.8 284,20.5 276.6,24.8 278.8,16.9 272.6,11.8 280.7,11.4" fill="#e9b949"/></svg></h1>
+      <div class="n2">للمنح الدراسية</div>
+      <p class="sub">منح يمكن للطلاب الفلسطينيين التقدم إليها، من مصادرها الرسمية، مختصرة في بطاقات: الاسم، الجهة، الموعد النهائي ورابط التقديم.</p>
+      <div class="tagline">فرصتك للعلم تبدأ هنا</div>
+    </div>
+    <span class="updated" id="updated"></span>
+  </header>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="ابحث باسم المنحة أو البلد…" aria-label="بحث">
+    <div class="chips" id="srcChips"></div>
+    <div class="chips" id="degChips"></div>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div class="cards" id="cards"></div>
+  <div class="empty" id="empty">لا توجد نتائج مطابقة للبحث الحالي.</div>
+
+  <footer>
+    <p>تُعرض منح مُتحقق من أهليتها للطلاب الفلسطينيين، وتُضاف تلقائياً إعلانات المنح التي تذكر فلسطين من المصادر التالية عند ورود جديد:</p>
+    <ul id="sources"></ul>
+    <p style="margin-top:10px">روابط البطاقات تقود إلى صفحة المنحة على موقع المصدر (موقع تجميع)، ومنها تجد رابط التقديم الرسمي. المواعيد النهائية وتفاصيل التمويل منقولة من إعلان المصدر كما هي، فأكّدها دائماً من الصفحة الرسمية للمنحة قبل التقديم.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+const WEEK = 7 * 24 * 3600 * 1000;
+const now = Date.now();
+const state = { q: "", src: "الكل", deg: "الكل" };
+
+const esc = (s) => (s || "").replace(/[&<>"']/g, (c) => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+
+const AR_MONTHS = {
+  january: "يناير", february: "فبراير", march: "مارس", april: "أبريل",
+  may: "مايو", june: "يونيو", july: "يوليو", august: "أغسطس",
+  september: "سبتمبر", sept: "سبتمبر", october: "أكتوبر",
+  november: "نوفمبر", december: "ديسمبر",
+  jan: "يناير", feb: "فبراير", mar: "مارس", apr: "أبريل", jun: "يونيو",
+  jul: "يوليو", aug: "أغسطس", sep: "سبتمبر", oct: "أكتوبر", nov: "نوفمبر", dec: "ديسمبر"
+};
+function arDeadline(s) {
+  return esc(s).replace(/\b(January|February|March|April|May|June|July|August|September|Sept|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b\.?/gi,
+    (m) => AR_MONTHS[m.replace(".", "").toLowerCase()] || m);
+}
+function fmtDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString("ar", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+}
+function fmtUpdated(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString("ar", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) +
+    "، الساعة " + d.toLocaleTimeString("ar", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }) + " بتوقيت UTC";
+}
+
+function matches(it) {
+  const q = state.q.trim().toLowerCase();
+  if (state.src !== "الكل" && it.source !== state.src) return false;
+  if (state.deg !== "الكل" && !it.degrees.includes(state.deg)) return false;
+  if (!q) return true;
+  return (it.title + " " + (it.study_in || "") + " " + (it.summary || "")).toLowerCase().includes(q);
+}
+
+function render() {
+  const items = DATA.items.filter(matches);
+  document.getElementById("count").textContent =
+    "يعرض " + items.length + " من أصل " + DATA.count + " منحة";
+  const cards = document.getElementById("cards");
+  cards.innerHTML = "";
+  document.getElementById("empty").style.display = items.length ? "none" : "block";
+  for (const it of items) {
+    const isNew = !it.closed && now - new Date(it.published).getTime() < WEEK;
+    const el = document.createElement("div");
+    el.className = "card" + (it.closed ? " closed" : "");
+    el.innerHTML =
+      '<h2>' + esc(it.title) + '</h2>' +
+      '<div class="badges">' +
+        '<span class="badge src">' + esc(it.source) + '</span>' +
+        (it.closed ? '<span class="badge closed">انتهى الموعد بحسب المصدر</span>' : '') +
+        (it.status === 'upcoming' ? '<span class="badge soon">يفتح قريبا بموعد مؤكد</span>' : '') +
+        (it.status === 'unannounced' ? '<span class="badge soon">لم يُعلن موعد الدورة بعد</span>' : '') +
+        (isNew ? '<span class="badge new">جديد</span>' : '') +
+        (it.fully_funded ? '<span class="badge funded">ممولة بالكامل</span>' : '') +
+        it.degrees.map((d) => '<span class="badge deg">' + esc(d) + '</span>').join("") +
+      '</div>' +
+      '<div class="meta">' +
+        (it.deadline
+          ? '<span class="deadline">الموعد النهائي (بحسب المصدر): <bdi>' + arDeadline(it.deadline) + '</bdi></span>'
+          : '<span>الموعد النهائي غير مؤكد في إعلان المصدر</span>') +
+        (it.study_in ? '<span>الدراسة في: <bdi>' + esc(it.study_in) + '</bdi></span>' : '') +
+        '<span>نُشرت: ' + fmtDate(it.published) + '</span>' +
+      '</div>' +
+      '<a class="apply" href="' + esc(it.link) + '" target="_blank" rel="noopener">صفحة المنحة على موقع المصدر ↗</a>' +
+      '<button type="button" class="toggle">المميزات والتفاصيل</button>' +
+      '<div class="details">' +
+        (it.benefits && it.benefits.length
+          ? '<h3>المميزات والتمويل (بحسب إعلان المصدر)</h3><ul>' +
+            it.benefits.map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
+          : '') +
+        (it.eligibility && it.eligibility.length
+          ? '<h3>الأهلية (بحسب إعلان المصدر)</h3><ul>' +
+            it.eligibility.map((b) => '<li>' + esc(b) + '</li>').join('') + '</ul>'
+          : '') +
+        ((!it.benefits || !it.benefits.length) && (!it.eligibility || !it.eligibility.length)
+          ? '<p class="sum" style="direction:rtl">تفاصيل التمويل والأهلية غير مذكورة في نص إعلان المصدر؛ راجع صفحة المنحة للتفاصيل الكاملة.</p>'
+          : '') +
+        (it.summary ? '<h3>عن المنحة (نص المصدر)</h3><p class="sum">' + esc(it.summary) + '</p>' : '') +
+        '<p class="src">المصدر: ' + esc(it.source) + '. التفاصيل الكاملة ورابط التقديم الرسمي في صفحة المصدر.</p>' +
+      '</div>';
+    el.querySelector('.toggle').addEventListener('click', (e) => {
+      const d = el.querySelector('.details');
+      d.classList.toggle('open');
+      e.target.textContent = d.classList.contains('open') ? 'إخفاء التفاصيل' : 'المميزات والتفاصيل';
+    });
+    cards.appendChild(el);
+  }
+}
+
+function buildChips(id, values, key) {
+  const box = document.getElementById(id);
+  for (const v of values) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip" + (state[key] === v ? " on" : "");
+    b.textContent = v;
+    b.onclick = () => { state[key] = v; buildChips(id, values, key); render(); };
+    box.appendChild(b);
+  }
+  box.innerHTML = "";
+  for (const v of values) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip" + (state[key] === v ? " on" : "");
+    b.textContent = v;
+    b.onclick = () => { state[key] = v; refresh(); };
+    box.appendChild(b);
+  }
+}
+
+function refresh() {
+  const srcs = ["الكل", ...new Set(DATA.items.map((i) => i.source))];
+  const degs = ["الكل", ...new Set(DATA.items.flatMap((i) => i.degrees))];
+  buildChips("srcChips", srcs, "src");
+  buildChips("degChips", degs, "deg");
+  render();
+}
+
+document.getElementById("search").addEventListener("input", (e) => {
+  state.q = e.target.value;
+  render();
+});
+
+document.getElementById("updated").textContent = "آخر تحديث: " + fmtUpdated(DATA.updated);
+document.getElementById("sources").innerHTML =
+  [...new Set(DATA.items.map((i) => i.source))].map((s) => "<li>" + esc(s) + "</li>").join("");
+refresh();
+</script>
+</body>
+</html>
