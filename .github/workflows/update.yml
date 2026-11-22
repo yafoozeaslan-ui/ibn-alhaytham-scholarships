@@ -1,0 +1,31 @@
+name: تحديث المنح تلقائياً
+
+# يعمل كل 6 ساعات، ويمكن تشغيله يدوياً من تبويب Actions.
+# ملاحظة: GitHub قد يؤجّل الجدولة دقائق في أوقات الضغط، فالتحديث
+# دوري وليس لحظياً.
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: جلب المنح وبناء الموقع
+        run: python update.py
+      - name: حفظ النسخة الجديدة
+        run: |
+          git config user.name "scholarship-site-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --staged --quiet || git commit -m "تحديث تلقائي للمنح"
+          git push
