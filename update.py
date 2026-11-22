@@ -353,6 +353,10 @@ def main():
             print(f"[fail] {name}: {e}", file=sys.stderr)
         time.sleep(1)  # لطف بالمصادر
 
+    review_file = HERE / "discovery-reviews.json"
+    discovery_reviews = json.loads(review_file.read_text(encoding="utf-8")) if review_file.exists() else {}
+    results = [it for it in results if it["link"] not in discovery_reviews]
+
     # إثراء كل منحة من صفحتها على المصدر
     for it in results:
         enrich(it)
@@ -462,7 +466,7 @@ def main():
     now = datetime.now(timezone.utc).isoformat()
 
     tpl = TEMPLATE.read_text(encoding="utf-8")
-    payload = json.dumps({"updated": now, "count": len(results), "countries": countries, "items": results},
+    payload = json.dumps({"updated": now, "count": len(results), "countries": countries, "discovery_reviews": discovery_reviews, "items": results},
                          ensure_ascii=False).replace("</", "<\\/")
     html = tpl.replace("/*__DATA__*/null", payload, 1)
     OUT.write_text(html, encoding="utf-8")
